@@ -1,0 +1,12 @@
+./ConvertMergeOneRun ProdRun20170602_161007
+./ConvertMergeOneRun ProdRun20170602_201006
+./ConvertMergeOneRun ProdRun20170603_161007
+./ConvertMergeOneRun ProdRun20170603_201007
+
+root -l -b -q 'Merge.C("ProdRun20170602_161007.beam.root","ProdRun20170602_201006.beam.root","m02.root")' 
+root -l -b -q 'Merge.C("ProdRun20170603_161007.beam.root","ProdRun20170603_201007.beam.root","m03.root")' 
+root -l -b -q 'Merge.C("m02.root","m03.root","Merged.beam.root")' 
+rm m*.root
+root -l -b -q 'GroupAndClassify.C("Merged.beam.root","Classified.beam.root")' 
+root -l -b -q 'ExtractPassing.C("Merged.beam.root","Passing.beam.root")' 
+
