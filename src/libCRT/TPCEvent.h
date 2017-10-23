@@ -32,6 +32,7 @@ Int_t s; //Timestamp: Second (linux seconds)
 Double_t npe; //summed number of photoelectrons
 Double_t x,y,z; //reconstructed flash coordinates
 Int_t IsBNB; // flag, marking event, triggered by BNB BES
+Int_t event;
 
   PMTFlash();
   PMTFlash(Double_t at0, Double_t at1, Int_t as, Double_t anpe, Double_t ax, Double_t ay, Double_t az);

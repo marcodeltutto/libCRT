@@ -95,7 +95,7 @@ z=az; //reconstructed flash coordinates
 //______________________________________________________________________________
 void PMTFlash::Print(Int_t Verbosity) 
 {
-  printf("%lf P.E. at (%lf,%lf,%lf), t1=%lf, s=%d. Absolute %lf ns.\n",npe, x,y,z, t1, s, t0);
+  printf("TPC event %d : %lf P.E. at (%lf,%lf,%lf), t1=%lf, s=%d. Absolute %lf ns.\n",event,npe, x,y,z, t1, s, t0);
 }
 
 
@@ -115,5 +115,6 @@ x=0;
 y=0;
 z=0; //reconstructed flash coordinates
   IsBNB=0;
+event=0;
 }
 

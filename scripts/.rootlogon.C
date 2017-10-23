@@ -1,3 +1,4 @@
 {
- gSystem->Load("/data/CRT_uBdata/V20_Analysis/libcrt/lib/libCRT.so");
+new TEveBoxSet();
+ gSystem->Load("/home/kreslo/CRT/libCRT/lib/libCRT.so");
 }

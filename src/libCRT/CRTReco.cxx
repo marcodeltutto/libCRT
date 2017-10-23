@@ -73,6 +73,7 @@ Int_t CRTReco::ConvertDavidFlashTree(const char * fn1, const char *fno)
      ev.trig_t0=trig_t0; 
      fl.t1=fl.t1*1000.; //convert us to ns 
      fl.s=s;
+     fl.event=event;
      if(s>0) ev.AddFlash(&fl);
    }
    ttpc->Fill(); //fill last event
@@ -220,16 +221,18 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
 	    matched=1; 
             orun->AddRawhit((CRTRawhit*)(run->hits->At(i)));
 	 //   ((CRTRawhit*)(run->hits->At(i)))->Print();
-	    break; 
-	  }  
+	   // break; 
+	  } 
+     //  printf("Looping on 2dhits, h2d->GetEntries()=%d \n", run->h2d->GetEntries()); 
        for(int i=0; i<run->h2d->GetEntries(); i++) //check with 2d hits
 	 if(abs ( ((CRT2Dhit*)(run->h2d->At(i)))->t1  - flash_t1)<dtns ) 
 	 if(abs ( ((CRT2Dhit*)(run->h2d->At(i)))->s  - sec)<3 ) 
           { 
 	    matched=1; 
             orun->Add2Dhit((CRT2Dhit*)(run->h2d->At(i)));
+	// printf("Added 2dhit, NTracks=%d N2Dhits=%d \n", orun->NTracks,orun->N2Dhits);
 	//    ((CRT2Dhit*)(run->h2d->At(i)))->Print();
-	    break; 
+	 //   break; 
 	  }  
        for(int i=0; i<run->trk->GetEntries(); i++) //check with tracks (only one 2d hit)
 	 if(abs ( ((CRTTrack*)(run->trk->At(i)))->hit2d[0].t1  - flash_t1)<dtns ) 
@@ -237,13 +240,16 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
           { 
 	    matched=1;
             orun->AddTrack((CRTTrack*)(run->trk->At(i))); 
+	// printf("Added track, NTracks=%d N2Dhits=%d \n", orun->NTracks,orun->N2Dhits);
 	//    ((CRTTrack*)(run->trk->At(i)))->Print();
-	    break;
+	 //   break;
 	  }  
        if(matched) 
          {
 	 printf("Match: TPC event %d: s=%d ns=%lf CRT entry %d!\n", ev.event, ev.s, flash_t1, ren);
+	// printf("NTracks=%d N2Dhits=%d \n\n", orun->NTracks,orun->N2Dhits);
          fl->IsBNB=ev.IsBNB;
+         fl->event=ev.event;
          orun->AddFlash(fl);
 	 matched=0;
          }	 
