@@ -426,6 +426,53 @@ Int_t CRTRun::GroupAndClassify( CRTRun * run1, Double_t time_window_ns)
 }
  
 //______________________________________________________________________________
+Int_t CRTRun::AppendSortedByTime( CRTRun * run1)
+{
+  Long64_t * s1; 
+  Long64_t * ns1; 
+  Long64_t * ind1; 
+  Int_t en1=0;
+  Int_t ens1; //Number of entries for input run
+  //sanity checks
+   if(run1==this) {printf("Can't merge CRTRun with itself!\n"); return 0;}
+  if(!IsWritable()) {printf("Run is opened in Read Only mode! Can't proceed.\n"); return 0;}
+  if(!run1->index) {printf("Run is not sorted! Can't proceed.\n"); return 0;}
+  //set pointer to the end
+  GetEntry(t->GetEntries()-1);
+  ens1=run1->t->GetEntries();   
+  printf("Appending run with %d entries ..\n",ens1);
+  run1->t->LoadBaskets();
+  ind1=run1->index;
+  s1=((TTreeIndex*)(run1->t->GetTreeIndex()))->GetIndexValues();
+  ns1=((TTreeIndex*)(run1->t->GetTreeIndex()))->GetIndexValuesMinor();
+  while (en1<ens1)
+      {
+      CopyEntryFromRun(run1,ind1[en1]);
+      en1++;
+      if(en1%1000==1)  printf("run1 en1=%d ind1=%lld s=%lld ns=%lld\n",en1, ind1[en1],s1[en1],ns1[en1]); 
+      if(s1[en1]>0) Fill();
+      }
+
+  rheader->N = rheader->N + run1->rheader->N;
+  rheader->NRawhits = rheader->NRawhits + run1->rheader->NRawhits; //Number of raw hits in current entry
+  rheader->N2Dhits = rheader->N2Dhits + run1->rheader->N2Dhits; //Number of 2D hits in current entry
+  rheader->NEvents = rheader->NEvents + run1->rheader->NEvents; //Number of Events in current entry
+  rheader->NTracks = rheader->NTracks + run1->rheader->NTracks; //Number of Tracks in current entry
+  rheader->NFlashes = rheader->NFlashes + run1->rheader->NFlashes; //Number of Tracks in current entry
+ // rheader->cal=run1->rheader->cal; //set pointer to calibration object from run1
+  index=0;
+   rheader->endSecondsUTC=run1->rheader->endSecondsUTC;
+   if(rheader->startSecondsUTC==0) rheader->startSecondsUTC=run1->rheader->startSecondsUTC;
+  for(int i=0;i<NFEBS; i++) 
+    {
+    rheader->Nt0refs[i]=rheader->Nt0refs[i]+run1->rheader->Nt0refs[i];
+    rheader->Nt1refs[i]=rheader->Nt1refs[i]+run1->rheader->Nt1refs[i];
+    }
+
+  return rheader->N;
+}
+
+//______________________________________________________________________________
 Int_t CRTRun::MergeSortedByTime( CRTRun * run1, CRTRun * run2)
 {
   

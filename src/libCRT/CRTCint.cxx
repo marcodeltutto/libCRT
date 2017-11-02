@@ -366,7 +366,7 @@ namespace ROOT {
       ::CRTRunHeader *ptr = 0;
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRunHeader >(0);
       static ::ROOT::TGenericClassInfo 
-         instance("CRTRunHeader", ::CRTRunHeader::Class_Version(), "CRTRun.h", 84,
+         instance("CRTRunHeader", ::CRTRunHeader::Class_Version(), "CRTRun.h", 85,
                   typeid(::CRTRunHeader), ::ROOT::Internal::DefineBehavior(ptr, ptr),
                   &::CRTRunHeader::Dictionary, isa_proxy, 16,
                   sizeof(::CRTRunHeader) );
