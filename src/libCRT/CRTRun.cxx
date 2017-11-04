@@ -462,7 +462,7 @@ Int_t CRTRun::AppendSortedByTime( CRTRun * run1)
  // rheader->cal=run1->rheader->cal; //set pointer to calibration object from run1
   index=0;
    rheader->endSecondsUTC=run1->rheader->endSecondsUTC;
-   if(rheader->startSecondsUTC==0) rheader->startSecondsUTC=run1->rheader->startSecondsUTC;
+   if(rheader->startSecondsUTC<1e6) rheader->startSecondsUTC=run1->rheader->startSecondsUTC;
   for(int i=0;i<NFEBS; i++) 
     {
     rheader->Nt0refs[i]=rheader->Nt0refs[i]+run1->rheader->Nt0refs[i];
