@@ -6,6 +6,7 @@
 #include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 #include <string.h>
 #include <assert.h>
 #define G__DICTIONARY
@@ -16,8 +17,6 @@
 #include "TROOT.h"
 #include "TBuffer.h"
 #include "TMemberInspector.h"
-#include "TInterpreter.h"
-#include "TVirtualMutex.h"
 #include "TError.h"
 
 #ifndef G__ROOT
@@ -61,7 +60,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTEvent >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTEvent", ::CRTEvent::Class_Version(), "CRTEvent.h", 35,
-                  typeid(::CRTEvent), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTEvent), DefineBehavior(ptr, ptr),
                   &::CRTEvent::Dictionary, isa_proxy, 16,
                   sizeof(::CRTEvent) );
       instance.SetNew(&new_CRTEvent);
@@ -77,7 +76,7 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTEvent*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTEvent*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTEvent*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -95,7 +94,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRawhit >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTRawhit", ::CRTRawhit::Class_Version(), "CRTEvent.h", 57,
-                  typeid(::CRTRawhit), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTRawhit), DefineBehavior(ptr, ptr),
                   &::CRTRawhit::Dictionary, isa_proxy, 16,
                   sizeof(::CRTRawhit) );
       instance.SetNew(&new_CRTRawhit);
@@ -111,7 +110,7 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTRawhit*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRawhit*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTRawhit*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -129,7 +128,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRT2Dhit >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRT2Dhit", ::CRT2Dhit::Class_Version(), "CRTEvent.h", 108,
-                  typeid(::CRT2Dhit), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRT2Dhit), DefineBehavior(ptr, ptr),
                   &::CRT2Dhit::Dictionary, isa_proxy, 16,
                   sizeof(::CRT2Dhit) );
       instance.SetNew(&new_CRT2Dhit);
@@ -145,41 +144,7 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRT2Dhit*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRT2Dhit*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
-} // end of namespace ROOT
-
-namespace ROOT {
-   static void *new_CRTCalibs(void *p = 0);
-   static void *newArray_CRTCalibs(Long_t size, void *p);
-   static void delete_CRTCalibs(void *p);
-   static void deleteArray_CRTCalibs(void *p);
-   static void destruct_CRTCalibs(void *p);
-   static void streamer_CRTCalibs(TBuffer &buf, void *obj);
-
-   // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::CRTCalibs*)
-   {
-      ::CRTCalibs *ptr = 0;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTCalibs >(0);
-      static ::ROOT::TGenericClassInfo 
-         instance("CRTCalibs", ::CRTCalibs::Class_Version(), "CRTEvent.h", 140,
-                  typeid(::CRTCalibs), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::CRTCalibs::Dictionary, isa_proxy, 16,
-                  sizeof(::CRTCalibs) );
-      instance.SetNew(&new_CRTCalibs);
-      instance.SetNewArray(&newArray_CRTCalibs);
-      instance.SetDelete(&delete_CRTCalibs);
-      instance.SetDeleteArray(&deleteArray_CRTCalibs);
-      instance.SetDestructor(&destruct_CRTCalibs);
-      instance.SetStreamerFunc(&streamer_CRTCalibs);
-      return &instance;
-   }
-   TGenericClassInfo *GenerateInitInstance(const ::CRTCalibs*)
-   {
-      return GenerateInitInstanceLocal((::CRTCalibs*)0);
-   }
-   // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTCalibs*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRT2Dhit*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -197,7 +162,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTTrack >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTTrack", ::CRTTrack::Class_Version(), "CRTEvent.h", 184,
-                  typeid(::CRTTrack), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTTrack), DefineBehavior(ptr, ptr),
                   &::CRTTrack::Dictionary, isa_proxy, 16,
                   sizeof(::CRTTrack) );
       instance.SetNew(&new_CRTTrack);
@@ -213,75 +178,41 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTTrack*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTTrack*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTTrack*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
-   static void *new_PMTFlash(void *p = 0);
-   static void *newArray_PMTFlash(Long_t size, void *p);
-   static void delete_PMTFlash(void *p);
-   static void deleteArray_PMTFlash(void *p);
-   static void destruct_PMTFlash(void *p);
-   static void streamer_PMTFlash(TBuffer &buf, void *obj);
+   static void *new_CRTCalibs(void *p = 0);
+   static void *newArray_CRTCalibs(Long_t size, void *p);
+   static void delete_CRTCalibs(void *p);
+   static void deleteArray_CRTCalibs(void *p);
+   static void destruct_CRTCalibs(void *p);
+   static void streamer_CRTCalibs(TBuffer &buf, void *obj);
 
    // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::PMTFlash*)
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::CRTCalibs*)
    {
-      ::PMTFlash *ptr = 0;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::PMTFlash >(0);
+      ::CRTCalibs *ptr = 0;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTCalibs >(0);
       static ::ROOT::TGenericClassInfo 
-         instance("PMTFlash", ::PMTFlash::Class_Version(), "TPCEvent.h", 25,
-                  typeid(::PMTFlash), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::PMTFlash::Dictionary, isa_proxy, 16,
-                  sizeof(::PMTFlash) );
-      instance.SetNew(&new_PMTFlash);
-      instance.SetNewArray(&newArray_PMTFlash);
-      instance.SetDelete(&delete_PMTFlash);
-      instance.SetDeleteArray(&deleteArray_PMTFlash);
-      instance.SetDestructor(&destruct_PMTFlash);
-      instance.SetStreamerFunc(&streamer_PMTFlash);
+         instance("CRTCalibs", ::CRTCalibs::Class_Version(), "CRTEvent.h", 140,
+                  typeid(::CRTCalibs), DefineBehavior(ptr, ptr),
+                  &::CRTCalibs::Dictionary, isa_proxy, 16,
+                  sizeof(::CRTCalibs) );
+      instance.SetNew(&new_CRTCalibs);
+      instance.SetNewArray(&newArray_CRTCalibs);
+      instance.SetDelete(&delete_CRTCalibs);
+      instance.SetDeleteArray(&deleteArray_CRTCalibs);
+      instance.SetDestructor(&destruct_CRTCalibs);
+      instance.SetStreamerFunc(&streamer_CRTCalibs);
       return &instance;
    }
-   TGenericClassInfo *GenerateInitInstance(const ::PMTFlash*)
+   TGenericClassInfo *GenerateInitInstance(const ::CRTCalibs*)
    {
-      return GenerateInitInstanceLocal((::PMTFlash*)0);
+      return GenerateInitInstanceLocal((::CRTCalibs*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::PMTFlash*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
-} // end of namespace ROOT
-
-namespace ROOT {
-   static void *new_TPCEvent(void *p = 0);
-   static void *newArray_TPCEvent(Long_t size, void *p);
-   static void delete_TPCEvent(void *p);
-   static void deleteArray_TPCEvent(void *p);
-   static void destruct_TPCEvent(void *p);
-   static void streamer_TPCEvent(TBuffer &buf, void *obj);
-
-   // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::TPCEvent*)
-   {
-      ::TPCEvent *ptr = 0;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::TPCEvent >(0);
-      static ::ROOT::TGenericClassInfo 
-         instance("TPCEvent", ::TPCEvent::Class_Version(), "TPCEvent.h", 49,
-                  typeid(::TPCEvent), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::TPCEvent::Dictionary, isa_proxy, 16,
-                  sizeof(::TPCEvent) );
-      instance.SetNew(&new_TPCEvent);
-      instance.SetNewArray(&newArray_TPCEvent);
-      instance.SetDelete(&delete_TPCEvent);
-      instance.SetDeleteArray(&deleteArray_TPCEvent);
-      instance.SetDestructor(&destruct_TPCEvent);
-      instance.SetStreamerFunc(&streamer_TPCEvent);
-      return &instance;
-   }
-   TGenericClassInfo *GenerateInitInstance(const ::TPCEvent*)
-   {
-      return GenerateInitInstanceLocal((::TPCEvent*)0);
-   }
-   // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::TPCEvent*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTCalibs*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -299,7 +230,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRawhitBuffer >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTRawhitBuffer", ::CRTRawhitBuffer::Class_Version(), "CRTBuffers.h", 31,
-                  typeid(::CRTRawhitBuffer), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTRawhitBuffer), DefineBehavior(ptr, ptr),
                   &::CRTRawhitBuffer::Dictionary, isa_proxy, 16,
                   sizeof(::CRTRawhitBuffer) );
       instance.SetNew(&new_CRTRawhitBuffer);
@@ -315,7 +246,41 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTRawhitBuffer*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRawhitBuffer*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTRawhitBuffer*)0x0); R__UseDummy(_R__UNIQUE_(Init));
+} // end of namespace ROOT
+
+namespace ROOT {
+   static void *new_CRTRunHeader(void *p = 0);
+   static void *newArray_CRTRunHeader(Long_t size, void *p);
+   static void delete_CRTRunHeader(void *p);
+   static void deleteArray_CRTRunHeader(void *p);
+   static void destruct_CRTRunHeader(void *p);
+   static void streamer_CRTRunHeader(TBuffer &buf, void *obj);
+
+   // Function generating the singleton type initializer
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::CRTRunHeader*)
+   {
+      ::CRTRunHeader *ptr = 0;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRunHeader >(0);
+      static ::ROOT::TGenericClassInfo 
+         instance("CRTRunHeader", ::CRTRunHeader::Class_Version(), "CRTRun.h", 85,
+                  typeid(::CRTRunHeader), DefineBehavior(ptr, ptr),
+                  &::CRTRunHeader::Dictionary, isa_proxy, 16,
+                  sizeof(::CRTRunHeader) );
+      instance.SetNew(&new_CRTRunHeader);
+      instance.SetNewArray(&newArray_CRTRunHeader);
+      instance.SetDelete(&delete_CRTRunHeader);
+      instance.SetDeleteArray(&deleteArray_CRTRunHeader);
+      instance.SetDestructor(&destruct_CRTRunHeader);
+      instance.SetStreamerFunc(&streamer_CRTRunHeader);
+      return &instance;
+   }
+   TGenericClassInfo *GenerateInitInstance(const ::CRTRunHeader*)
+   {
+      return GenerateInitInstanceLocal((::CRTRunHeader*)0);
+   }
+   // Static variable to force the class initialization
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -333,7 +298,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRun >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTRun", ::CRTRun::Class_Version(), "CRTRun.h", 33,
-                  typeid(::CRTRun), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTRun), DefineBehavior(ptr, ptr),
                   &::CRTRun::Dictionary, isa_proxy, 16,
                   sizeof(::CRTRun) );
       instance.SetNew(&new_CRTRun);
@@ -349,6 +314,7 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTRun*)0);
    }
    // Static variable to force the class initialization
+<<<<<<< HEAD
    static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRun*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
 } // end of namespace ROOT
 
@@ -384,6 +350,9 @@ namespace ROOT {
    }
    // Static variable to force the class initialization
    static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+=======
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTRun*)0x0); R__UseDummy(_R__UNIQUE_(Init));
+>>>>>>> Next
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -401,7 +370,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTDisplay >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTDisplay", ::CRTDisplay::Class_Version(), "CRTDisplay.h", 30,
-                  typeid(::CRTDisplay), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTDisplay), DefineBehavior(ptr, ptr),
                   &::CRTDisplay::Dictionary, isa_proxy, 16,
                   sizeof(::CRTDisplay) );
       instance.SetNew(&new_CRTDisplay);
@@ -417,7 +386,75 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTDisplay*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTDisplay*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTDisplay*)0x0); R__UseDummy(_R__UNIQUE_(Init));
+} // end of namespace ROOT
+
+namespace ROOT {
+   static void *new_PMTFlash(void *p = 0);
+   static void *newArray_PMTFlash(Long_t size, void *p);
+   static void delete_PMTFlash(void *p);
+   static void deleteArray_PMTFlash(void *p);
+   static void destruct_PMTFlash(void *p);
+   static void streamer_PMTFlash(TBuffer &buf, void *obj);
+
+   // Function generating the singleton type initializer
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::PMTFlash*)
+   {
+      ::PMTFlash *ptr = 0;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::PMTFlash >(0);
+      static ::ROOT::TGenericClassInfo 
+         instance("PMTFlash", ::PMTFlash::Class_Version(), "TPCEvent.h", 25,
+                  typeid(::PMTFlash), DefineBehavior(ptr, ptr),
+                  &::PMTFlash::Dictionary, isa_proxy, 16,
+                  sizeof(::PMTFlash) );
+      instance.SetNew(&new_PMTFlash);
+      instance.SetNewArray(&newArray_PMTFlash);
+      instance.SetDelete(&delete_PMTFlash);
+      instance.SetDeleteArray(&deleteArray_PMTFlash);
+      instance.SetDestructor(&destruct_PMTFlash);
+      instance.SetStreamerFunc(&streamer_PMTFlash);
+      return &instance;
+   }
+   TGenericClassInfo *GenerateInitInstance(const ::PMTFlash*)
+   {
+      return GenerateInitInstanceLocal((::PMTFlash*)0);
+   }
+   // Static variable to force the class initialization
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::PMTFlash*)0x0); R__UseDummy(_R__UNIQUE_(Init));
+} // end of namespace ROOT
+
+namespace ROOT {
+   static void *new_TPCEvent(void *p = 0);
+   static void *newArray_TPCEvent(Long_t size, void *p);
+   static void delete_TPCEvent(void *p);
+   static void deleteArray_TPCEvent(void *p);
+   static void destruct_TPCEvent(void *p);
+   static void streamer_TPCEvent(TBuffer &buf, void *obj);
+
+   // Function generating the singleton type initializer
+   static TGenericClassInfo *GenerateInitInstanceLocal(const ::TPCEvent*)
+   {
+      ::TPCEvent *ptr = 0;
+      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::TPCEvent >(0);
+      static ::ROOT::TGenericClassInfo 
+         instance("TPCEvent", ::TPCEvent::Class_Version(), "TPCEvent.h", 49,
+                  typeid(::TPCEvent), DefineBehavior(ptr, ptr),
+                  &::TPCEvent::Dictionary, isa_proxy, 16,
+                  sizeof(::TPCEvent) );
+      instance.SetNew(&new_TPCEvent);
+      instance.SetNewArray(&newArray_TPCEvent);
+      instance.SetDelete(&delete_TPCEvent);
+      instance.SetDeleteArray(&deleteArray_TPCEvent);
+      instance.SetDestructor(&destruct_TPCEvent);
+      instance.SetStreamerFunc(&streamer_TPCEvent);
+      return &instance;
+   }
+   TGenericClassInfo *GenerateInitInstance(const ::TPCEvent*)
+   {
+      return GenerateInitInstanceLocal((::TPCEvent*)0);
+   }
+   // Static variable to force the class initialization
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::TPCEvent*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 namespace ROOT {
@@ -435,7 +472,7 @@ namespace ROOT {
       static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTReco >(0);
       static ::ROOT::TGenericClassInfo 
          instance("CRTReco", ::CRTReco::Class_Version(), "CRTReco.h", 19,
-                  typeid(::CRTReco), ::ROOT::Internal::DefineBehavior(ptr, ptr),
+                  typeid(::CRTReco), DefineBehavior(ptr, ptr),
                   &::CRTReco::Dictionary, isa_proxy, 16,
                   sizeof(::CRTReco) );
       instance.SetNew(&new_CRTReco);
@@ -451,11 +488,11 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTReco*)0);
    }
    // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTReco*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
+   static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTReco*)0x0); R__UseDummy(_R__UNIQUE_(Init));
 } // end of namespace ROOT
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTEvent::fgIsA(0);  // static to hold class pointer
+TClass *CRTEvent::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTEvent::Class_Name()
@@ -476,21 +513,20 @@ int CRTEvent::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTEvent::Dictionary()
+void CRTEvent::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTEvent*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTEvent::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTEvent*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTEvent*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTRawhit::fgIsA(0);  // static to hold class pointer
+TClass *CRTRawhit::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTRawhit::Class_Name()
@@ -511,21 +547,20 @@ int CRTRawhit::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTRawhit::Dictionary()
+void CRTRawhit::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhit*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTRawhit::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhit*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhit*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRT2Dhit::fgIsA(0);  // static to hold class pointer
+TClass *CRT2Dhit::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRT2Dhit::Class_Name()
@@ -546,56 +581,20 @@ int CRT2Dhit::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRT2Dhit::Dictionary()
+void CRT2Dhit::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRT2Dhit*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRT2Dhit::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRT2Dhit*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRT2Dhit*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTCalibs::fgIsA(0);  // static to hold class pointer
-
-//______________________________________________________________________________
-const char *CRTCalibs::Class_Name()
-{
-   return "CRTCalibs";
-}
-
-//______________________________________________________________________________
-const char *CRTCalibs::ImplFileName()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetImplFileName();
-}
-
-//______________________________________________________________________________
-int CRTCalibs::ImplFileLine()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetImplFileLine();
-}
-
-//______________________________________________________________________________
-TClass *CRTCalibs::Dictionary()
-{
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetClass();
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-TClass *CRTCalibs::Class()
-{
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetClass(); }
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-atomic_TClass_ptr CRTTrack::fgIsA(0);  // static to hold class pointer
+TClass *CRTTrack::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTTrack::Class_Name()
@@ -616,91 +615,54 @@ int CRTTrack::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTTrack::Dictionary()
+void CRTTrack::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTTrack*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTTrack::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTTrack*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTTrack*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr PMTFlash::fgIsA(0);  // static to hold class pointer
+TClass *CRTCalibs::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
-const char *PMTFlash::Class_Name()
+const char *CRTCalibs::Class_Name()
 {
-   return "PMTFlash";
+   return "CRTCalibs";
 }
 
 //______________________________________________________________________________
-const char *PMTFlash::ImplFileName()
+const char *CRTCalibs::ImplFileName()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetImplFileName();
+   return ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetImplFileName();
 }
 
 //______________________________________________________________________________
-int PMTFlash::ImplFileLine()
+int CRTCalibs::ImplFileLine()
 {
-   return ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetImplFileLine();
+   return ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetImplFileLine();
 }
 
 //______________________________________________________________________________
-TClass *PMTFlash::Dictionary()
+void CRTCalibs::Dictionary()
 {
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetClass();
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetClass();
+}
+
+//______________________________________________________________________________
+TClass *CRTCalibs::Class()
+{
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTCalibs*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-TClass *PMTFlash::Class()
-{
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetClass(); }
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-atomic_TClass_ptr TPCEvent::fgIsA(0);  // static to hold class pointer
-
-//______________________________________________________________________________
-const char *TPCEvent::Class_Name()
-{
-   return "TPCEvent";
-}
-
-//______________________________________________________________________________
-const char *TPCEvent::ImplFileName()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetImplFileName();
-}
-
-//______________________________________________________________________________
-int TPCEvent::ImplFileLine()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetImplFileLine();
-}
-
-//______________________________________________________________________________
-TClass *TPCEvent::Dictionary()
-{
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetClass();
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-TClass *TPCEvent::Class()
-{
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetClass(); }
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-atomic_TClass_ptr CRTRawhitBuffer::fgIsA(0);  // static to hold class pointer
+TClass *CRTRawhitBuffer::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTRawhitBuffer::Class_Name()
@@ -721,56 +683,20 @@ int CRTRawhitBuffer::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTRawhitBuffer::Dictionary()
+void CRTRawhitBuffer::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhitBuffer*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTRawhitBuffer::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhitBuffer*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRawhitBuffer*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTRun::fgIsA(0);  // static to hold class pointer
-
-//______________________________________________________________________________
-const char *CRTRun::Class_Name()
-{
-   return "CRTRun";
-}
-
-//______________________________________________________________________________
-const char *CRTRun::ImplFileName()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetImplFileName();
-}
-
-//______________________________________________________________________________
-int CRTRun::ImplFileLine()
-{
-   return ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetImplFileLine();
-}
-
-//______________________________________________________________________________
-TClass *CRTRun::Dictionary()
-{
-   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetClass();
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-TClass *CRTRun::Class()
-{
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetClass(); }
-   return fgIsA;
-}
-
-//______________________________________________________________________________
-atomic_TClass_ptr CRTRunHeader::fgIsA(0);  // static to hold class pointer
+TClass *CRTRunHeader::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTRunHeader::Class_Name()
@@ -791,21 +717,54 @@ int CRTRunHeader::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTRunHeader::Dictionary()
+void CRTRunHeader::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTRunHeader::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTDisplay::fgIsA(0);  // static to hold class pointer
+TClass *CRTRun::fgIsA = 0;  // static to hold class pointer
+
+//______________________________________________________________________________
+const char *CRTRun::Class_Name()
+{
+   return "CRTRun";
+}
+
+//______________________________________________________________________________
+const char *CRTRun::ImplFileName()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetImplFileName();
+}
+
+//______________________________________________________________________________
+int CRTRun::ImplFileLine()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetImplFileLine();
+}
+
+//______________________________________________________________________________
+void CRTRun::Dictionary()
+{
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetClass();
+}
+
+//______________________________________________________________________________
+TClass *CRTRun::Class()
+{
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTRun*)0x0)->GetClass();
+   return fgIsA;
+}
+
+//______________________________________________________________________________
+TClass *CRTDisplay::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTDisplay::Class_Name()
@@ -826,21 +785,88 @@ int CRTDisplay::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTDisplay::Dictionary()
+void CRTDisplay::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTDisplay*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTDisplay::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTDisplay*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTDisplay*)0x0)->GetClass();
    return fgIsA;
 }
 
 //______________________________________________________________________________
-atomic_TClass_ptr CRTReco::fgIsA(0);  // static to hold class pointer
+TClass *PMTFlash::fgIsA = 0;  // static to hold class pointer
+
+//______________________________________________________________________________
+const char *PMTFlash::Class_Name()
+{
+   return "PMTFlash";
+}
+
+//______________________________________________________________________________
+const char *PMTFlash::ImplFileName()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetImplFileName();
+}
+
+//______________________________________________________________________________
+int PMTFlash::ImplFileLine()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetImplFileLine();
+}
+
+//______________________________________________________________________________
+void PMTFlash::Dictionary()
+{
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetClass();
+}
+
+//______________________________________________________________________________
+TClass *PMTFlash::Class()
+{
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::PMTFlash*)0x0)->GetClass();
+   return fgIsA;
+}
+
+//______________________________________________________________________________
+TClass *TPCEvent::fgIsA = 0;  // static to hold class pointer
+
+//______________________________________________________________________________
+const char *TPCEvent::Class_Name()
+{
+   return "TPCEvent";
+}
+
+//______________________________________________________________________________
+const char *TPCEvent::ImplFileName()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetImplFileName();
+}
+
+//______________________________________________________________________________
+int TPCEvent::ImplFileLine()
+{
+   return ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetImplFileLine();
+}
+
+//______________________________________________________________________________
+void TPCEvent::Dictionary()
+{
+   fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetClass();
+}
+
+//______________________________________________________________________________
+TClass *TPCEvent::Class()
+{
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::TPCEvent*)0x0)->GetClass();
+   return fgIsA;
+}
+
+//______________________________________________________________________________
+TClass *CRTReco::fgIsA = 0;  // static to hold class pointer
 
 //______________________________________________________________________________
 const char *CRTReco::Class_Name()
@@ -861,16 +887,15 @@ int CRTReco::ImplFileLine()
 }
 
 //______________________________________________________________________________
-TClass *CRTReco::Dictionary()
+void CRTReco::Dictionary()
 {
    fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTReco*)0x0)->GetClass();
-   return fgIsA;
 }
 
 //______________________________________________________________________________
 TClass *CRTReco::Class()
 {
-   if (!fgIsA.load()) { R__LOCKGUARD2(gInterpreterMutex); fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTReco*)0x0)->GetClass(); }
+   if (!fgIsA) fgIsA = ::ROOT::GenerateInitInstanceLocal((const ::CRTReco*)0x0)->GetClass();
    return fgIsA;
 }
 
@@ -1065,6 +1090,58 @@ namespace ROOT {
 } // end of namespace ROOT for class ::CRT2Dhit
 
 //______________________________________________________________________________
+void CRTTrack::Streamer(TBuffer &R__b)
+{
+   // Stream an object of class CRTTrack.
+
+   UInt_t R__s, R__c;
+   if (R__b.IsReading()) {
+      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
+      TObject::Streamer(R__b);
+      int R__i;
+      for (R__i = 0; R__i < 2; R__i++)
+         hit2d[R__i].Streamer(R__b);
+      R__b >> tof;
+      R__b >> L;
+      R__b.CheckByteCount(R__s, R__c, CRTTrack::IsA());
+   } else {
+      R__c = R__b.WriteVersion(CRTTrack::IsA(), kTRUE);
+      TObject::Streamer(R__b);
+      int R__i;
+      for (R__i = 0; R__i < 2; R__i++)
+         hit2d[R__i].Streamer(R__b);
+      R__b << tof;
+      R__b << L;
+      R__b.SetByteCount(R__c, kTRUE);
+   }
+}
+
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_CRTTrack(void *p) {
+      return  p ? new(p) ::CRTTrack : new ::CRTTrack;
+   }
+   static void *newArray_CRTTrack(Long_t nElements, void *p) {
+      return p ? new(p) ::CRTTrack[nElements] : new ::CRTTrack[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_CRTTrack(void *p) {
+      delete ((::CRTTrack*)p);
+   }
+   static void deleteArray_CRTTrack(void *p) {
+      delete [] ((::CRTTrack*)p);
+   }
+   static void destruct_CRTTrack(void *p) {
+      typedef ::CRTTrack current_t;
+      ((current_t*)p)->~current_t();
+   }
+   // Wrapper around a custom streamer member function.
+   static void streamer_CRTTrack(TBuffer &buf, void *obj) {
+      ((::CRTTrack*)obj)->::CRTTrack::Streamer(buf);
+   }
+} // end of namespace ROOT for class ::CRTTrack
+
+//______________________________________________________________________________
 void CRTCalibs::Streamer(TBuffer &R__b)
 {
    // Stream an object of class CRTCalibs.
@@ -1135,56 +1212,252 @@ namespace ROOT {
 } // end of namespace ROOT for class ::CRTCalibs
 
 //______________________________________________________________________________
-void CRTTrack::Streamer(TBuffer &R__b)
+void CRTRawhitBuffer::Streamer(TBuffer &R__b)
 {
-   // Stream an object of class CRTTrack.
+   // Stream an object of class CRTRawhitBuffer.
 
    UInt_t R__s, R__c;
    if (R__b.IsReading()) {
       Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
       TObject::Streamer(R__b);
-      int R__i;
-      for (R__i = 0; R__i < 2; R__i++)
-         hit2d[R__i].Streamer(R__b);
-      R__b >> tof;
-      R__b >> L;
-      R__b.CheckByteCount(R__s, R__c, CRTTrack::IsA());
+      hits->Streamer(R__b);
+      R__b >> Nhits;
+      R__b >> mac5;
+      R__b.CheckByteCount(R__s, R__c, CRTRawhitBuffer::IsA());
    } else {
-      R__c = R__b.WriteVersion(CRTTrack::IsA(), kTRUE);
+      R__c = R__b.WriteVersion(CRTRawhitBuffer::IsA(), kTRUE);
       TObject::Streamer(R__b);
-      int R__i;
-      for (R__i = 0; R__i < 2; R__i++)
-         hit2d[R__i].Streamer(R__b);
-      R__b << tof;
-      R__b << L;
+      hits->Streamer(R__b);
+      R__b << Nhits;
+      R__b << mac5;
       R__b.SetByteCount(R__c, kTRUE);
    }
 }
 
 namespace ROOT {
    // Wrappers around operator new
-   static void *new_CRTTrack(void *p) {
-      return  p ? new(p) ::CRTTrack : new ::CRTTrack;
+   static void *new_CRTRawhitBuffer(void *p) {
+      return  p ? new(p) ::CRTRawhitBuffer : new ::CRTRawhitBuffer;
    }
-   static void *newArray_CRTTrack(Long_t nElements, void *p) {
-      return p ? new(p) ::CRTTrack[nElements] : new ::CRTTrack[nElements];
+   static void *newArray_CRTRawhitBuffer(Long_t nElements, void *p) {
+      return p ? new(p) ::CRTRawhitBuffer[nElements] : new ::CRTRawhitBuffer[nElements];
    }
    // Wrapper around operator delete
-   static void delete_CRTTrack(void *p) {
-      delete ((::CRTTrack*)p);
+   static void delete_CRTRawhitBuffer(void *p) {
+      delete ((::CRTRawhitBuffer*)p);
    }
-   static void deleteArray_CRTTrack(void *p) {
-      delete [] ((::CRTTrack*)p);
+   static void deleteArray_CRTRawhitBuffer(void *p) {
+      delete [] ((::CRTRawhitBuffer*)p);
    }
-   static void destruct_CRTTrack(void *p) {
-      typedef ::CRTTrack current_t;
+   static void destruct_CRTRawhitBuffer(void *p) {
+      typedef ::CRTRawhitBuffer current_t;
       ((current_t*)p)->~current_t();
    }
    // Wrapper around a custom streamer member function.
-   static void streamer_CRTTrack(TBuffer &buf, void *obj) {
-      ((::CRTTrack*)obj)->::CRTTrack::Streamer(buf);
+   static void streamer_CRTRawhitBuffer(TBuffer &buf, void *obj) {
+      ((::CRTRawhitBuffer*)obj)->::CRTRawhitBuffer::Streamer(buf);
    }
-} // end of namespace ROOT for class ::CRTTrack
+} // end of namespace ROOT for class ::CRTRawhitBuffer
+
+//______________________________________________________________________________
+void CRTRunHeader::Streamer(TBuffer &R__b)
+{
+   // Stream an object of class CRTRunHeader.
+
+   UInt_t R__s, R__c;
+   if (R__b.IsReading()) {
+      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
+      TObject::Streamer(R__b);
+      R__b >> cal;
+      R__b >> N;
+      R__b >> NRawhits;
+      R__b >> N2Dhits;
+      R__b >> NEvents;
+      R__b >> NTracks;
+      R__b >> NFlashes;
+      R__b.ReadStaticArray((int*)Nt0refs);
+      R__b.ReadStaticArray((int*)Nt1refs);
+      R__b >> startSecondsUTC;
+      R__b >> endSecondsUTC;
+      R__b.CheckByteCount(R__s, R__c, CRTRunHeader::IsA());
+   } else {
+      R__c = R__b.WriteVersion(CRTRunHeader::IsA(), kTRUE);
+      TObject::Streamer(R__b);
+      R__b << cal;
+      R__b << N;
+      R__b << NRawhits;
+      R__b << N2Dhits;
+      R__b << NEvents;
+      R__b << NTracks;
+      R__b << NFlashes;
+      R__b.WriteArray(Nt0refs, 200);
+      R__b.WriteArray(Nt1refs, 200);
+      R__b << startSecondsUTC;
+      R__b << endSecondsUTC;
+      R__b.SetByteCount(R__c, kTRUE);
+   }
+}
+
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_CRTRunHeader(void *p) {
+      return  p ? new(p) ::CRTRunHeader : new ::CRTRunHeader;
+   }
+   static void *newArray_CRTRunHeader(Long_t nElements, void *p) {
+      return p ? new(p) ::CRTRunHeader[nElements] : new ::CRTRunHeader[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_CRTRunHeader(void *p) {
+      delete ((::CRTRunHeader*)p);
+   }
+   static void deleteArray_CRTRunHeader(void *p) {
+      delete [] ((::CRTRunHeader*)p);
+   }
+   static void destruct_CRTRunHeader(void *p) {
+      typedef ::CRTRunHeader current_t;
+      ((current_t*)p)->~current_t();
+   }
+   // Wrapper around a custom streamer member function.
+   static void streamer_CRTRunHeader(TBuffer &buf, void *obj) {
+      ((::CRTRunHeader*)obj)->::CRTRunHeader::Streamer(buf);
+   }
+} // end of namespace ROOT for class ::CRTRunHeader
+
+//______________________________________________________________________________
+void CRTRun::Streamer(TBuffer &R__b)
+{
+   // Stream an object of class CRTRun.
+
+   UInt_t R__s, R__c;
+   if (R__b.IsReading()) {
+      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
+      TObject::Streamer(R__b);
+      R__b >> f;
+      R__b >> t;
+      hits->Streamer(R__b);
+      h2d->Streamer(R__b);
+      evs->Streamer(R__b);
+      trk->Streamer(R__b);
+      fl->Streamer(R__b);
+      R__b >> rheader;
+      R__b.CheckByteCount(R__s, R__c, CRTRun::IsA());
+   } else {
+      R__c = R__b.WriteVersion(CRTRun::IsA(), kTRUE);
+      TObject::Streamer(R__b);
+      R__b << f;
+      R__b << t;
+      hits->Streamer(R__b);
+      h2d->Streamer(R__b);
+      evs->Streamer(R__b);
+      trk->Streamer(R__b);
+      fl->Streamer(R__b);
+      R__b << rheader;
+      R__b.SetByteCount(R__c, kTRUE);
+   }
+}
+
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_CRTRun(void *p) {
+      return  p ? new(p) ::CRTRun : new ::CRTRun;
+   }
+   static void *newArray_CRTRun(Long_t nElements, void *p) {
+      return p ? new(p) ::CRTRun[nElements] : new ::CRTRun[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_CRTRun(void *p) {
+      delete ((::CRTRun*)p);
+   }
+   static void deleteArray_CRTRun(void *p) {
+      delete [] ((::CRTRun*)p);
+   }
+   static void destruct_CRTRun(void *p) {
+      typedef ::CRTRun current_t;
+      ((current_t*)p)->~current_t();
+   }
+   // Wrapper around a custom streamer member function.
+   static void streamer_CRTRun(TBuffer &buf, void *obj) {
+      ((::CRTRun*)obj)->::CRTRun::Streamer(buf);
+   }
+} // end of namespace ROOT for class ::CRTRun
+
+//______________________________________________________________________________
+void CRTDisplay::Streamer(TBuffer &R__b)
+{
+   // Stream an object of class CRTDisplay.
+
+   UInt_t R__s, R__c;
+   if (R__b.IsReading()) {
+      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
+      TObject::Streamer(R__b);
+      R__b >> teve;
+      R__b >> pal;
+      R__b >> geom;
+      R__b >> en;
+      R__b >> node;
+      R__b >> cal;
+      R__b >> Verb;
+      R__b >> run;
+      R__b >> curev;
+      R__b >> elist;
+      R__b >> qraw;
+      R__b >> comp_h2d;
+      R__b >> h2d;
+      R__b >> h2d_raw;
+      R__b >> comp_trk;
+      R__b >> lines;
+      R__b >> trk_h2d;
+      R__b >> trk_h2d_raw;
+      R__b.CheckByteCount(R__s, R__c, CRTDisplay::IsA());
+   } else {
+      R__c = R__b.WriteVersion(CRTDisplay::IsA(), kTRUE);
+      TObject::Streamer(R__b);
+      R__b << teve;
+      R__b << pal;
+      R__b << geom;
+      R__b << en;
+      R__b << node;
+      R__b << cal;
+      R__b << Verb;
+      R__b << run;
+      R__b << curev;
+      R__b << elist;
+      R__b << qraw;
+      R__b << comp_h2d;
+      R__b << h2d;
+      R__b << h2d_raw;
+      R__b << comp_trk;
+      R__b << lines;
+      R__b << trk_h2d;
+      R__b << trk_h2d_raw;
+      R__b.SetByteCount(R__c, kTRUE);
+   }
+}
+
+namespace ROOT {
+   // Wrappers around operator new
+   static void *new_CRTDisplay(void *p) {
+      return  p ? new(p) ::CRTDisplay : new ::CRTDisplay;
+   }
+   static void *newArray_CRTDisplay(Long_t nElements, void *p) {
+      return p ? new(p) ::CRTDisplay[nElements] : new ::CRTDisplay[nElements];
+   }
+   // Wrapper around operator delete
+   static void delete_CRTDisplay(void *p) {
+      delete ((::CRTDisplay*)p);
+   }
+   static void deleteArray_CRTDisplay(void *p) {
+      delete [] ((::CRTDisplay*)p);
+   }
+   static void destruct_CRTDisplay(void *p) {
+      typedef ::CRTDisplay current_t;
+      ((current_t*)p)->~current_t();
+   }
+   // Wrapper around a custom streamer member function.
+   static void streamer_CRTDisplay(TBuffer &buf, void *obj) {
+      ((::CRTDisplay*)obj)->::CRTDisplay::Streamer(buf);
+   }
+} // end of namespace ROOT for class ::CRTDisplay
 
 //______________________________________________________________________________
 void PMTFlash::Streamer(TBuffer &R__b)
@@ -1303,254 +1576,6 @@ namespace ROOT {
 } // end of namespace ROOT for class ::TPCEvent
 
 //______________________________________________________________________________
-void CRTRawhitBuffer::Streamer(TBuffer &R__b)
-{
-   // Stream an object of class CRTRawhitBuffer.
-
-   UInt_t R__s, R__c;
-   if (R__b.IsReading()) {
-      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
-      TObject::Streamer(R__b);
-      hits->Streamer(R__b);
-      R__b >> Nhits;
-      R__b >> mac5;
-      R__b.CheckByteCount(R__s, R__c, CRTRawhitBuffer::IsA());
-   } else {
-      R__c = R__b.WriteVersion(CRTRawhitBuffer::IsA(), kTRUE);
-      TObject::Streamer(R__b);
-      hits->Streamer(R__b);
-      R__b << Nhits;
-      R__b << mac5;
-      R__b.SetByteCount(R__c, kTRUE);
-   }
-}
-
-namespace ROOT {
-   // Wrappers around operator new
-   static void *new_CRTRawhitBuffer(void *p) {
-      return  p ? new(p) ::CRTRawhitBuffer : new ::CRTRawhitBuffer;
-   }
-   static void *newArray_CRTRawhitBuffer(Long_t nElements, void *p) {
-      return p ? new(p) ::CRTRawhitBuffer[nElements] : new ::CRTRawhitBuffer[nElements];
-   }
-   // Wrapper around operator delete
-   static void delete_CRTRawhitBuffer(void *p) {
-      delete ((::CRTRawhitBuffer*)p);
-   }
-   static void deleteArray_CRTRawhitBuffer(void *p) {
-      delete [] ((::CRTRawhitBuffer*)p);
-   }
-   static void destruct_CRTRawhitBuffer(void *p) {
-      typedef ::CRTRawhitBuffer current_t;
-      ((current_t*)p)->~current_t();
-   }
-   // Wrapper around a custom streamer member function.
-   static void streamer_CRTRawhitBuffer(TBuffer &buf, void *obj) {
-      ((::CRTRawhitBuffer*)obj)->::CRTRawhitBuffer::Streamer(buf);
-   }
-} // end of namespace ROOT for class ::CRTRawhitBuffer
-
-//______________________________________________________________________________
-void CRTRun::Streamer(TBuffer &R__b)
-{
-   // Stream an object of class CRTRun.
-
-   UInt_t R__s, R__c;
-   if (R__b.IsReading()) {
-      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
-      TObject::Streamer(R__b);
-      R__b >> f;
-      R__b >> t;
-      hits->Streamer(R__b);
-      h2d->Streamer(R__b);
-      evs->Streamer(R__b);
-      trk->Streamer(R__b);
-      fl->Streamer(R__b);
-      R__b >> rheader;
-      R__b.CheckByteCount(R__s, R__c, CRTRun::IsA());
-   } else {
-      R__c = R__b.WriteVersion(CRTRun::IsA(), kTRUE);
-      TObject::Streamer(R__b);
-      R__b << f;
-      R__b << t;
-      hits->Streamer(R__b);
-      h2d->Streamer(R__b);
-      evs->Streamer(R__b);
-      trk->Streamer(R__b);
-      fl->Streamer(R__b);
-      R__b << rheader;
-      R__b.SetByteCount(R__c, kTRUE);
-   }
-}
-
-namespace ROOT {
-   // Wrappers around operator new
-   static void *new_CRTRun(void *p) {
-      return  p ? new(p) ::CRTRun : new ::CRTRun;
-   }
-   static void *newArray_CRTRun(Long_t nElements, void *p) {
-      return p ? new(p) ::CRTRun[nElements] : new ::CRTRun[nElements];
-   }
-   // Wrapper around operator delete
-   static void delete_CRTRun(void *p) {
-      delete ((::CRTRun*)p);
-   }
-   static void deleteArray_CRTRun(void *p) {
-      delete [] ((::CRTRun*)p);
-   }
-   static void destruct_CRTRun(void *p) {
-      typedef ::CRTRun current_t;
-      ((current_t*)p)->~current_t();
-   }
-   // Wrapper around a custom streamer member function.
-   static void streamer_CRTRun(TBuffer &buf, void *obj) {
-      ((::CRTRun*)obj)->::CRTRun::Streamer(buf);
-   }
-} // end of namespace ROOT for class ::CRTRun
-
-//______________________________________________________________________________
-void CRTRunHeader::Streamer(TBuffer &R__b)
-{
-   // Stream an object of class CRTRunHeader.
-
-   UInt_t R__s, R__c;
-   if (R__b.IsReading()) {
-      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
-      TObject::Streamer(R__b);
-      R__b >> cal;
-      R__b >> N;
-      R__b >> NRawhits;
-      R__b >> N2Dhits;
-      R__b >> NEvents;
-      R__b >> NTracks;
-      R__b >> NFlashes;
-      R__b.ReadStaticArray((int*)Nt0refs);
-      R__b.ReadStaticArray((int*)Nt1refs);
-      R__b >> startSecondsUTC;
-      R__b >> endSecondsUTC;
-      R__b.CheckByteCount(R__s, R__c, CRTRunHeader::IsA());
-   } else {
-      R__c = R__b.WriteVersion(CRTRunHeader::IsA(), kTRUE);
-      TObject::Streamer(R__b);
-      R__b << cal;
-      R__b << N;
-      R__b << NRawhits;
-      R__b << N2Dhits;
-      R__b << NEvents;
-      R__b << NTracks;
-      R__b << NFlashes;
-      R__b.WriteArray(Nt0refs, 200);
-      R__b.WriteArray(Nt1refs, 200);
-      R__b << startSecondsUTC;
-      R__b << endSecondsUTC;
-      R__b.SetByteCount(R__c, kTRUE);
-   }
-}
-
-namespace ROOT {
-   // Wrappers around operator new
-   static void *new_CRTRunHeader(void *p) {
-      return  p ? new(p) ::CRTRunHeader : new ::CRTRunHeader;
-   }
-   static void *newArray_CRTRunHeader(Long_t nElements, void *p) {
-      return p ? new(p) ::CRTRunHeader[nElements] : new ::CRTRunHeader[nElements];
-   }
-   // Wrapper around operator delete
-   static void delete_CRTRunHeader(void *p) {
-      delete ((::CRTRunHeader*)p);
-   }
-   static void deleteArray_CRTRunHeader(void *p) {
-      delete [] ((::CRTRunHeader*)p);
-   }
-   static void destruct_CRTRunHeader(void *p) {
-      typedef ::CRTRunHeader current_t;
-      ((current_t*)p)->~current_t();
-   }
-   // Wrapper around a custom streamer member function.
-   static void streamer_CRTRunHeader(TBuffer &buf, void *obj) {
-      ((::CRTRunHeader*)obj)->::CRTRunHeader::Streamer(buf);
-   }
-} // end of namespace ROOT for class ::CRTRunHeader
-
-//______________________________________________________________________________
-void CRTDisplay::Streamer(TBuffer &R__b)
-{
-   // Stream an object of class CRTDisplay.
-
-   UInt_t R__s, R__c;
-   if (R__b.IsReading()) {
-      Version_t R__v = R__b.ReadVersion(&R__s, &R__c); if (R__v) { }
-      TObject::Streamer(R__b);
-      R__b >> teve;
-      R__b >> pal;
-      R__b >> geom;
-      R__b >> en;
-      R__b >> node;
-      R__b >> cal;
-      R__b >> Verb;
-      R__b >> run;
-      R__b >> curev;
-      R__b >> elist;
-      R__b >> qraw;
-      R__b >> comp_h2d;
-      R__b >> h2d;
-      R__b >> h2d_raw;
-      R__b >> comp_trk;
-      R__b >> lines;
-      R__b >> trk_h2d;
-      R__b >> trk_h2d_raw;
-      R__b.CheckByteCount(R__s, R__c, CRTDisplay::IsA());
-   } else {
-      R__c = R__b.WriteVersion(CRTDisplay::IsA(), kTRUE);
-      TObject::Streamer(R__b);
-      R__b << teve;
-      R__b << pal;
-      R__b << geom;
-      R__b << en;
-      R__b << node;
-      R__b << cal;
-      R__b << Verb;
-      R__b << run;
-      R__b << curev;
-      R__b << elist;
-      R__b << qraw;
-      R__b << comp_h2d;
-      R__b << h2d;
-      R__b << h2d_raw;
-      R__b << comp_trk;
-      R__b << lines;
-      R__b << trk_h2d;
-      R__b << trk_h2d_raw;
-      R__b.SetByteCount(R__c, kTRUE);
-   }
-}
-
-namespace ROOT {
-   // Wrappers around operator new
-   static void *new_CRTDisplay(void *p) {
-      return  p ? new(p) ::CRTDisplay : new ::CRTDisplay;
-   }
-   static void *newArray_CRTDisplay(Long_t nElements, void *p) {
-      return p ? new(p) ::CRTDisplay[nElements] : new ::CRTDisplay[nElements];
-   }
-   // Wrapper around operator delete
-   static void delete_CRTDisplay(void *p) {
-      delete ((::CRTDisplay*)p);
-   }
-   static void deleteArray_CRTDisplay(void *p) {
-      delete [] ((::CRTDisplay*)p);
-   }
-   static void destruct_CRTDisplay(void *p) {
-      typedef ::CRTDisplay current_t;
-      ((current_t*)p)->~current_t();
-   }
-   // Wrapper around a custom streamer member function.
-   static void streamer_CRTDisplay(TBuffer &buf, void *obj) {
-      ((::CRTDisplay*)obj)->::CRTDisplay::Streamer(buf);
-   }
-} // end of namespace ROOT for class ::CRTDisplay
-
-//______________________________________________________________________________
 void CRTReco::Streamer(TBuffer &R__b)
 {
    // Stream an object of class CRTReco.
@@ -1610,47 +1635,41 @@ namespace {
 0
     };
     static const char* includePaths[] = {
-"/home/kreslo/CRT/libCRT/include",
-"/home/kreslo/root6-10/include",
-"/home/kreslo/CRT/libCRT/src/libCRT/",
+"/data/CRT_uBdata/V20_Analysis/libcrt/include",
+"/cernsoft/root_v6.00.02/root/include",
+"/data/CRT_uBdata/V20_Analysis/libcrt/src/libCRT/",
 0
     };
-    static const char* fwdDeclCode = R"DICTFWDDCLS(
-#line 1 "CRTCint dictionary forward declarations' payload"
-#pragma clang diagnostic ignored "-Wkeyword-compat"
-#pragma clang diagnostic ignored "-Wignored-attributes"
-#pragma clang diagnostic ignored "-Wreturn-type-c-linkage"
-extern int __Cling_Autoloading_Map;
-class __attribute__((annotate(R"ATTRDUMP(CRT combined event: hits within some time window from all detector)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTEvent.h")))  CRTEvent;
-class __attribute__((annotate(R"ATTRDUMP(CRT event from FEB)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTEvent.h")))  CRTRawhit;
-class __attribute__((annotate(R"ATTRDUMP(CRT reconstructed 2D hit)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTEvent.h")))  CRT2Dhit;
-class __attribute__((annotate(R"ATTRDUMP(CRT calibration data)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTEvent.h")))  CRTCalibs;
-class __attribute__((annotate(R"ATTRDUMP(Track composed of a pair of 2D hits)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTEvent.h")))  CRTTrack;
-class __attribute__((annotate(R"ATTRDUMP(PMT flash)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TPCEvent.h")))  PMTFlash;
-class __attribute__((annotate(R"ATTRDUMP(TPC combined event: flashes and reconstructed track (optional))ATTRDUMP"))) __attribute__((annotate("$clingAutoload$TPCEvent.h")))  TPCEvent;
-class __attribute__((annotate(R"ATTRDUMP(CRT buffer for raw hits)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTBuffers.h")))  CRTRawhitBuffer;
-class __attribute__((annotate(R"ATTRDUMP(CRT run)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTRun.h")))  __attribute__((annotate("$clingAutoload$CRTDisplay.h")))  CRTRun;
-class __attribute__((annotate(R"ATTRDUMP(CRT run header)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTRun.h")))  __attribute__((annotate("$clingAutoload$CRTDisplay.h")))  CRTRunHeader;
-class __attribute__((annotate(R"ATTRDUMP(CRT Event Display)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTDisplay.h")))  CRTDisplay;
-class __attribute__((annotate(R"ATTRDUMP(CRT reconstructor object)ATTRDUMP"))) __attribute__((annotate("$clingAutoload$CRTReco.h")))  CRTReco;
-)DICTFWDDCLS";
-    static const char* payloadCode = R"DICTPAYLOAD(
-#line 1 "CRTCint dictionary payload"
-
-#ifndef G__VECTOR_HAS_CLASS_ITERATOR
-  #define G__VECTOR_HAS_CLASS_ITERATOR 1
-#endif
-
-#define _BACKWARD_BACKWARD_WARNING_H
-#include "CRTEvent.h"
-#include "TPCEvent.h"
-#include "CRTBuffers.h"
-#include "CRTDisplay.h"
-#include "CRTRun.h"
-#include "CRTReco.h"
-
-#undef  _BACKWARD_BACKWARD_WARNING_H
-)DICTPAYLOAD";
+    static const char* fwdDeclCode = 
+"class CRTEvent;"
+"class CRTRawhit;"
+"class CRT2Dhit;"
+"class CRTTrack;"
+"class CRTCalibs;"
+"class CRTRawhitBuffer;"
+"class CRTRunHeader;"
+"class CRTRun;"
+"class CRTDisplay;"
+"class PMTFlash;"
+"class TPCEvent;"
+"class CRTReco;"
+;
+    static const char* payloadCode = 
+"\n"
+"#ifndef G__VECTOR_HAS_CLASS_ITERATOR\n"
+"  #define G__VECTOR_HAS_CLASS_ITERATOR\n"
+"#endif\n"
+"\n"
+"#define _BACKWARD_BACKWARD_WARNING_H\n"
+"#include \"CRTEvent.h\"\n"
+"#include \"TPCEvent.h\"\n"
+"#include \"CRTBuffers.h\"\n"
+"#include \"CRTDisplay.h\"\n"
+"#include \"CRTRun.h\"\n"
+"#include \"CRTReco.h\"\n"
+"\n"
+"#undef  _BACKWARD_BACKWARD_WARNING_H\n"
+;
     static const char* classesHeaders[]={
 "CRT2Dhit", payloadCode, "@",
 "CRTCalibs", payloadCode, "@",
