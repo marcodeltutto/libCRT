@@ -1,12 +1,12 @@
-datadir="/data/CRT_uBdata/V8_Analysis/GridRun4_ThomasAlgo/"
+datadir="/data/CRT_uBdata/V8_Analysis/GridRun5_NewThomasAlgo/"
 root -l -b -q 'ConvertRawPairsToRun.C("'$datadir$1'-crt01.1.crtdaq.beam")'
 root -l -b -q 'ConvertRawPairsToRun.C("'$datadir$1'-crt02.1.crtdaq.beam")'
 root -l -b -q 'ConvertRawPairsToRun.C("'$datadir$1'-crt03.1.crtdaq.beam")'
 root -l -b -q 'ConvertRawPairsToRun.C("'$datadir$1'-crt04.1.crtdaq.beam")'
-mv $datadir$1-crt0*.1.crtdaq.beam.libcrt.root ./
-root -l -b -q 'Merge.C("'$1'-crt04.1.crtdaq.beam.libcrt.root","'$1'-crt03.1.crtdaq.beam.libcrt.root","m.root")' 
-root -l -b -q 'Merge.C("m.root","'$1'-crt02.1.crtdaq.beam.libcrt.root","m1.root")'
-root -l -b -q 'Merge.C("m1.root","'$1'-crt01.1.crtdaq.beam.libcrt.root","'$1'.beam.root")'
-rm m*.root
-rm $1-crt0*.1.crtdaq.beam.libcrt.root
+#mv $datadir$1-crt0*.1.crtdaq.beam.libcrt.root ./
+root -l -b -q 'Merge.C("'$datadir$1'-crt04.1.crtdaq.beam.libcrt.root","'$datadir$1'-crt03.1.crtdaq.beam.libcrt.root","m.root")' 
+root -l -b -q 'Merge.C("m.root","'$datadir$1'-crt02.1.crtdaq.beam.libcrt.root","m1.root")'
+root -l -b -q 'Merge.C("m1.root","'$datadir$1'-crt01.1.crtdaq.beam.libcrt.root","'$datadir$1'.beam.root")'
+rm -f m*.root
+rm -f $datadir$1-crt0*.1.crtdaq.beam.libcrt.root
 
