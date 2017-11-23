@@ -17,8 +17,6 @@
 #pragma link C++ class CRTRun;
 
 
-#pragma link C++ class CRTDisplay;
-
 #pragma link C++ class PMTFlash;
 #pragma link C++ class TPCEvent;
 #pragma link C++ class CRTReco;

@@ -5,7 +5,7 @@ include ../config/RootDef.mk
 
 NAME          = CRT
 
-headers       = CRTEvent.h TPCEvent.h CRTBuffers.h CRTDisplay.h CRTRun.h CRTReco.h
+headers       = CRTEvent.h TPCEvent.h CRTBuffers.h  CRTRun.h CRTReco.h
 
 #------------------------------------------------------------------------------
 include ../config/TargetsDef.mk
