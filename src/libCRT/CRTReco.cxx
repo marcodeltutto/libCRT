@@ -91,9 +91,9 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
   TPCEvent ev;
   CRTTrack tr;
  // Long64_t * ind=0; 
-  UInt_t tssec;
-  UInt_t tsnsec;
-Double_t evnum;
+  Int_t tssec;
+  Int_t tsnsec;
+  Int_t evnum;
   ftpc=new TFile(fno,"RECREATE");
   ttpc=new TTree();
   ttpc->Branch("tr",&(ev.tr));

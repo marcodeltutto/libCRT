@@ -314,45 +314,7 @@ namespace ROOT {
       return GenerateInitInstanceLocal((::CRTRun*)0);
    }
    // Static variable to force the class initialization
-<<<<<<< HEAD
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRun*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
-} // end of namespace ROOT
-
-namespace ROOT {
-   static void *new_CRTRunHeader(void *p = 0);
-   static void *newArray_CRTRunHeader(Long_t size, void *p);
-   static void delete_CRTRunHeader(void *p);
-   static void deleteArray_CRTRunHeader(void *p);
-   static void destruct_CRTRunHeader(void *p);
-   static void streamer_CRTRunHeader(TBuffer &buf, void *obj);
-
-   // Function generating the singleton type initializer
-   static TGenericClassInfo *GenerateInitInstanceLocal(const ::CRTRunHeader*)
-   {
-      ::CRTRunHeader *ptr = 0;
-      static ::TVirtualIsAProxy* isa_proxy = new ::TInstrumentedIsAProxy< ::CRTRunHeader >(0);
-      static ::ROOT::TGenericClassInfo 
-         instance("CRTRunHeader", ::CRTRunHeader::Class_Version(), "CRTRun.h", 85,
-                  typeid(::CRTRunHeader), ::ROOT::Internal::DefineBehavior(ptr, ptr),
-                  &::CRTRunHeader::Dictionary, isa_proxy, 16,
-                  sizeof(::CRTRunHeader) );
-      instance.SetNew(&new_CRTRunHeader);
-      instance.SetNewArray(&newArray_CRTRunHeader);
-      instance.SetDelete(&delete_CRTRunHeader);
-      instance.SetDeleteArray(&deleteArray_CRTRunHeader);
-      instance.SetDestructor(&destruct_CRTRunHeader);
-      instance.SetStreamerFunc(&streamer_CRTRunHeader);
-      return &instance;
-   }
-   TGenericClassInfo *GenerateInitInstance(const ::CRTRunHeader*)
-   {
-      return GenerateInitInstanceLocal((::CRTRunHeader*)0);
-   }
-   // Static variable to force the class initialization
-   static ::ROOT::TGenericClassInfo *_R__UNIQUE_DICT_(Init) = GenerateInitInstanceLocal((const ::CRTRunHeader*)0x0); R__UseDummy(_R__UNIQUE_DICT_(Init));
-=======
    static ::ROOT::TGenericClassInfo *_R__UNIQUE_(Init) = GenerateInitInstanceLocal((const ::CRTRun*)0x0); R__UseDummy(_R__UNIQUE_(Init));
->>>>>>> Next
 } // end of namespace ROOT
 
 namespace ROOT {

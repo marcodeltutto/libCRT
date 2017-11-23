@@ -550,7 +550,7 @@ Int_t CRTRun::MergeSortedByTime( CRTRun * run1, CRTRun * run2)
     if(en1%1000==1)  printf("run1 en1=%d ind1=%lld s=%lld ns=%lld\n",en1, ind1[en1],s1[en1],ns1[en1]); 
     if(en2%1000==1)  printf("run2 en2=%d ind2=%lld s=%lld ns=%lld\n",en2, ind2[en2],s2[en2],ns2[en2]); 
   }
-  rheader->N = run1->rheader->N + run2->rheader->N;
+//  rheader->N = run1->rheader->N + run2->rheader->N;
   rheader->NRawhits = run1->rheader->NRawhits + run2->rheader->NRawhits; //Number of raw hits in current entry
   rheader->N2Dhits = run1->rheader->N2Dhits + run2->rheader->N2Dhits; //Number of 2D hits in current entry
   rheader->NEvents = run1->rheader->NEvents + run2->rheader->NEvents; //Number of Events in current entry
