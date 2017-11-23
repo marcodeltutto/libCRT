@@ -31,7 +31,7 @@ class CRTDisplay: public TObject {
 
  private:
  TEveManager * teve;
- TEveFrameBox *fb;
+ //TEveFrameBox *fb;
  TEveRGBAPalette *pal;
  TGeoManager *geom;
  TEveGeoTopNode* en;

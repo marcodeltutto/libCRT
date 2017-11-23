@@ -1,4 +1,4 @@
 {
 new TEveBoxSet();
- gSystem->Load("libcrt/lib/libCRT.so");
+ gSystem->Load("../../lib/libCRT.so");
 }

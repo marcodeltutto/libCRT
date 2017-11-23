@@ -4,7 +4,7 @@
 <!--                                             -->
 <!-- Author: ROOT team (rootdev@cern.ch)         -->
 <!--                                             -->
-<!--   Date: Sat Oct  7 00:56:13 2017            -->
+<!--   Date: Thu Nov 23 14:09:22 2017            -->
 <!--                                             -->
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
@@ -76,10 +76,12 @@ Igor Kreslo, LHEP Uni-Bern (Igor.Kreslo@cern.ch)
 <tr class="funcinh"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="./TObject.html#TObject:AbstractMethod"><span class="baseclass">TObject::</span>AbstractMethod</a>(<span class="keyword">const</span> <span class="keyword">char</span>* method) <span class="keyword">const</span></td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:Add2Dhit">Add2Dhit</a>(<a href="./CRT2Dhit.html">CRT2Dhit</a>* h)</td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:AddEvent">AddEvent</a>(<a href="./CRTEvent.html">CRTEvent</a>* e)</td></tr>
+<tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:AddFlash">AddFlash</a>(<a href="./PMTFlash.html">PMTFlash</a>* e)</td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:AddRawhit">AddRawhit</a>(<a href="./CRTRawhit.html">CRTRawhit</a>* h)</td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:AddRawhitBuffer">AddRawhitBuffer</a>(<a href="./CRTRawhitBuffer.html">CRTRawhitBuffer</a>* b)</td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:AddTrack">AddTrack</a>(<a href="./CRTTrack.html">CRTTrack</a>* e)</td></tr>
 <tr class="funcinh"><td class="funcret">virtual <span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="./TObject.html#TObject:AppendPad"><span class="baseclass">TObject::</span>AppendPad</a>(<a href="./ListOfTypes.html#Option_t">Option_t</a>* option = <span class="string">""</span>)</td></tr>
+<tr class="func"><td class="funcret"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="funcname"><a class="funcname" href="#CRTRun:AppendSortedByTime">AppendSortedByTime</a>(<a href="./CRTRun.html">CRTRun</a>* run1)</td></tr>
 <tr class="funcinh"><td class="funcret">virtual <span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="./TObject.html#TObject:Browse"><span class="baseclass">TObject::</span>Browse</a>(<a href="./TBrowser.html">TBrowser</a>* b)</td></tr>
 <tr class="func"><td class="funcret"><span class="keyword">void</span></td><td class="funcname"><a class="funcname" href="#CRTRun:BuildIndex">BuildIndex</a>(<span class="keyword">const</span> <span class="keyword">char</span>* major, <span class="keyword">const</span> <span class="keyword">char</span>* minor)</td></tr>
 <tr class="func"><td class="funcret">static <a href="./TClass.html">TClass</a>*</td><td class="funcname"><a class="funcname" href="#CRTRun:Class">Class</a>()</td></tr>
@@ -193,10 +195,12 @@ Igor Kreslo, LHEP Uni-Bern (Igor.Kreslo@cern.ch)
 <table class="data" id="tabdatapubl" cellspacing="0">
 <tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="dataname"><a name="CRTRun:N2Dhits"></a>N2Dhits</td><td class="datadesc">! transient: Number of 2D hits in current entry</td></tr>
 <tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="dataname"><a name="CRTRun:NEvents"></a>NEvents</td><td class="datadesc">! transient: Number of Events in current entry</td></tr>
+<tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="dataname"><a name="CRTRun:NFlashes"></a>NFlashes</td><td class="datadesc">! transient: Number of TPC PMT Flashes in current entry</td></tr>
 <tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="dataname"><a name="CRTRun:NRawhits"></a>NRawhits</td><td class="datadesc">! transient: Number of raw hits in current entry</td></tr>
 <tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Int_t">Int_t</a></td><td class="dataname"><a name="CRTRun:NTracks"></a>NTracks</td><td class="datadesc">! transient: Number of passing through trcaks in current entry</td></tr>
 <tr class="data"><td class="datatype"><a href="./TClonesArray.html">TClonesArray</a>*</td><td class="dataname"><a name="CRTRun:evs"></a>evs</td><td class="datadesc">Array of CRTEvents</td></tr>
 <tr class="data"><td class="datatype"><a href="./TFile.html">TFile</a>*</td><td class="dataname"><a name="CRTRun:f"></a>f</td><td></td></tr>
+<tr class="data"><td class="datatype"><a href="./TClonesArray.html">TClonesArray</a>*</td><td class="dataname"><a name="CRTRun:fl"></a>fl</td><td class="datadesc">Array of PMTFlashes</td></tr>
 <tr class="data"><td class="datatype"><a href="./TClonesArray.html">TClonesArray</a>*</td><td class="dataname"><a name="CRTRun:h2d"></a>h2d</td><td class="datadesc">Array of CRT2Dhits</td></tr>
 <tr class="data"><td class="datatype"><a href="./TClonesArray.html">TClonesArray</a>*</td><td class="dataname"><a name="CRTRun:hits"></a>hits</td><td class="datadesc">Array of CRTRawhits</td></tr>
 <tr class="data"><td class="datatype"><a href="./ListOfTypes.html#Long64_t">Long64_t</a>*</td><td class="dataname"><a name="CRTRun:index"></a>index</td><td class="datadesc">! transient Tree index array, where entries are sorted by time</td></tr>
@@ -272,6 +276,8 @@ Igor Kreslo, LHEP Uni-Bern (Igor.Kreslo@cern.ch)
 </div>
 <div class="funcdoc"><span class="funcname"><a href="./ListOfTypes.html#Int_t">Int_t</a> <a class="funcname" name="CRTRun:GroupAndClassify" href="src/CRTRun.cxx.html#dcRAGD">GroupAndClassify</a>(<a href="./CRTRun.html">CRTRun</a>* run1, <a href="./ListOfTypes.html#Double_t">Double_t</a> time_window_ns = 100.)</span><br />
 </div>
+<div class="funcdoc"><span class="funcname"><a href="./ListOfTypes.html#Int_t">Int_t</a> <a class="funcname" name="CRTRun:AppendSortedByTime" href="src/CRTRun.cxx.html#sAE11D">AppendSortedByTime</a>(<a href="./CRTRun.html">CRTRun</a>* run1)</span><br />
+</div>
 <div class="funcdoc"><span class="funcname"><a href="./ListOfTypes.html#Int_t">Int_t</a> <a class="funcname" name="CRTRun:MergeSortedByTime" href="src/CRTRun.cxx.html#qyPbWC">MergeSortedByTime</a>(<a href="./CRTRun.html">CRTRun</a>* run1, <a href="./CRTRun.html">CRTRun</a>* run2)</span><br />
 </div>
 <div class="funcdoc"><span class="funcname"><span class="keyword">void</span> <a class="funcname" name="CRTRun:Close" href="src/CRTRun.cxx.html#I4H3hC">Close</a>()</span><br />
@@ -291,6 +297,8 @@ Igor Kreslo, LHEP Uni-Bern (Igor.Kreslo@cern.ch)
 </div>
 <div class="funcdoc"><span class="funcname"><span class="keyword">void</span> <a class="funcname" name="CRTRun:AddTrack" href="src/CRTRun.cxx.html#LV9yQ">AddTrack</a>(<a href="./CRTTrack.html">CRTTrack</a>* e)</span><br />
 </div>
+<div class="funcdoc"><span class="funcname"><span class="keyword">void</span> <a class="funcname" name="CRTRun:AddFlash" href="src/CRTRun.cxx.html#jNmmZ">AddFlash</a>(<a href="./PMTFlash.html">PMTFlash</a>* e)</span><br />
+</div>
 <div class="funcdoc"><span class="funcname"><a href="./ListOfTypes.html#Int_t">Int_t</a> <a class="funcname" name="CRTRun:GetEntrySortedByTime" href="src/CRTRun.cxx.html#k_W9Z">GetEntrySortedByTime</a>(<a href="./ListOfTypes.html#Int_t">Int_t</a> en)</span><br />
 </div>
 <div class="funcdoc"><span class="funcname"> <a class="funcname" name="CRTRun:CRTRun" href="src/CRTRun.h.html#vSAFPC">CRTRun</a>()</span><br />
@@ -305,7 +313,7 @@ Igor Kreslo, LHEP Uni-Bern (Igor.Kreslo@cern.ch)
 <!--SIGNATURE-->
 <div id="footer">
 
-<em>&raquo; Last changed: Sat Oct  7 00:56:14 2017 </em><em>&raquo; Last generated: 2017-10-07 00:56</em><br />
+<em>&raquo; Last changed: Thu Nov 23 14:09:22 2017 </em><em>&raquo; Last generated: 2017-11-23 14:09</em><br />
 <em>This page has been automatically generated. For comments or suggestions regarding the documentation or ROOT in general please send a mail to <a href="mailto:rootdev@cern.ch">ROOT support</a>.</em>
 </div>
 </div>

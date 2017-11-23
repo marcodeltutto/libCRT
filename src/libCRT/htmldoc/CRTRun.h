@@ -20,6 +20,7 @@
 #include "TArrayS.h"
 #include "CRTEvent.h"
 #include "CRTBuffers.h"
+#include "TPCEvent.h"
 
 
 const Long64_t cstDefaultMaxTreeSize = 15000000000LL;
@@ -35,21 +36,27 @@ private:
 public:
 TFile *f;
 TTree *t;
+// CRT section
 TClonesArray * hits; // Array of CRTRawhits
 TClonesArray * h2d; //Array of CRT2Dhits 
 TClonesArray * evs; //Array of CRTEvents
 TClonesArray * trk; //Array of CRTTracks
+TClonesArray * fl; //Array of PMTFlashes
 Int_t NRawhits; //! transient: Number of raw hits in current entry
 Int_t N2Dhits;  //! transient: Number of 2D hits in current entry
 Int_t NEvents;  //! transient: Number of Events in current entry
 Int_t NTracks;  //! transient: Number of passing through trcaks in current entry
-
+//TPC section
+//TPCEvent * tpc_ev; //pointer to TPC event container
+Int_t NFlashes;  //! transient: Number of TPC PMT Flashes in current entry
+//PMTFlash fl; 
 CRTRunHeader * rheader; //Meta info
 Long64_t * index; //! transient Tree index array, where entries are sorted by time
   CRTRun();
   virtual ~CRTRun();
 void CreateNewDataRun(const char *fname); 
 Int_t MergeSortedByTime( CRTRun * run1, CRTRun * run2);
+Int_t AppendSortedByTime( CRTRun * run1);
 Int_t ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns=100.); //input file - run with CRT2D hits, fills CRTTracks
 Int_t GroupAndClassify( CRTRun * run1, Double_t time_window_ns=100.); //input file - run with CRT2D hits, fills CRT2D, CRTRawhits, CRTTracks
  
@@ -62,6 +69,7 @@ void AddRawhitBuffer(CRTRawhitBuffer *b);
 void Add2Dhit(CRT2Dhit * h);
 void AddEvent(CRTEvent * e);
 void AddTrack(CRTTrack * e);
+void AddFlash(PMTFlash * e);
 void ClearEntry();
 Int_t CleanDuplicateRawHits();
 void PrintSummary();
@@ -84,6 +92,7 @@ Int_t NRawhits; //Number of raw hits in run
 Int_t N2Dhits; //Number of 2D hits in run
 Int_t NEvents; //Number of Events in run
 Int_t NTracks; //Number of passing through tracks run
+Int_t NFlashes; //Number of TPC PMT flashes in the run
 Int_t Nt0refs[NFEBS]; //Number of T0REF events per FEB
 Int_t Nt1refs[NFEBS]; //Number of T1REF events per FEB
 
