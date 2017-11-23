@@ -1597,7 +1597,7 @@ namespace {
 0
     };
     static const char* includePaths[] = {
-"/data/CRT_uBdata/V20_Analysis/libcrt/include",
+"../../include",
 "/cernsoft/root_v6.00.02/root/include",
 "/data/CRT_uBdata/V20_Analysis/libcrt/src/libCRT/",
 0
