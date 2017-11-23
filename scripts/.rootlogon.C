@@ -1,4 +1,5 @@
 {
 new TEveBoxSet();
- gSystem->Load("/home/kreslo/CRT/libCRT/lib/libCRT.so");
+ gSystem->Load("../../lib/libCRT.so");
+ gSystem->Load("../../lib/libCRTD.so");
 }
