@@ -56,7 +56,7 @@ CRTDisplay::CRTDisplay()
    crt_ft->SetTransparency(70);
 
 
-   TGeoVolume *cryo = geom->MakeTube("CRYO", Al, 187,170,550);
+   TGeoVolume *cryo = geom->MakeTube("CRYO", Al, 170,187,550);
    cryo->SetTransparency(70);
    cryo->SetVisibility(kTRUE);
    cryo->SetLineColor(kYellow);
