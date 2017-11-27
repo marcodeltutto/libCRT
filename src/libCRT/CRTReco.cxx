@@ -157,7 +157,7 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
 }
 
 //______________________________________________________________________________
-Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const char *fno, Double_t dtns)
+Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const char *fno, Double_t dtns, Double_t offsetns)
 {
   PMTFlash *fl;
   Int_t matched=0;
@@ -212,7 +212,7 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
        for(int fli=0; fli<ev.flar->GetEntries(); fli++) //loop on flashes
        {
         fl=(PMTFlash*)(ev.flar->At(fli));
-        flash_t1=fl->t1;
+        flash_t1=fl->t1 - offsetns;
 	 
        for(int i=0; i<run->hits->GetEntries(); i++)  //check with raw hits
 	 if(abs ( ((CRTRawhit*)(run->hits->At(i)))->ts1  - flash_t1)<dtns ) 

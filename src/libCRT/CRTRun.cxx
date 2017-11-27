@@ -228,8 +228,9 @@ NFlashes=run->NFlashes;  //! transient: Number of PMT flashes
 }
 
 //______________________________________________________________________________
-Int_t CRTRun::ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns)
+Int_t CRTRun::ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns, Double_t time_offset_ns)
 {
+  printf("Executing ExtractPassingTracks with %lf ns offset of T1..\n",time_offset_ns);
   CRTTrack tr;
   CRT2Dhit h1;
   CRT2Dhit h2;
@@ -259,8 +260,10 @@ Int_t CRTRun::ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns)
     //  printf("%d-%d, deltat0=%lf\n",en1+1,en1,deltat0);
       run1->GetEntry(ind1[en1]);
       h1.Copy((CRT2Dhit*)(run1->h2d->At(0)));
+      h1.t1=h1.t1+time_offset_ns;
       run1->GetEntry(ind1[en1+1]);
       h2.Copy((CRT2Dhit*)(run1->h2d->At(0)));
+      h2.t1=h2.t1+time_offset_ns;
       if(first) first=0;//first event in a group 
       tr.SetHits(&h1,&h2);
      // tr.hit2d[0].Copy(&h1); 
@@ -329,8 +332,9 @@ Int_t CRTRun::CleanDuplicateRawHits()
 
 
 //______________________________________________________________________________
-Int_t CRTRun::GroupAndClassify( CRTRun * run1, Double_t time_window_ns)
+Int_t CRTRun::GroupAndClassify( CRTRun * run1, Double_t time_window_ns, Double_t time_offset_ns)
 {
+  printf("Executing GroupAndClassify with %lf ns offset of T1..\n",time_offset_ns);
   CRTTrack tr;
  // CRTEvent ev;
   CRT2Dhit h1;
@@ -355,7 +359,8 @@ Int_t CRTRun::GroupAndClassify( CRTRun * run1, Double_t time_window_ns)
   ns1=((TTreeIndex*)(run1->t->GetTreeIndex()))->GetIndexValuesMinor();
  
   run1->GetEntry(ind1[0]); //save very first 2d hit
-  h1.Copy((CRT2Dhit*)(run1->h2d->At(0)));  
+  h1.Copy((CRT2Dhit*)(run1->h2d->At(0)));
+  h1.t1=h1.t1+time_offset_ns;
   AddRawhit(&(h1.rhit[0]));
   AddRawhit(&(h1.rhit[1]));
   Add2Dhit(&h1);
@@ -370,6 +375,7 @@ Int_t CRTRun::GroupAndClassify( CRTRun * run1, Double_t time_window_ns)
       }
     run1->GetEntry(ind1[en1]); //save next hit
     h2.Copy((CRT2Dhit*)(run1->h2d->At(0)));  
+    h2.t1=h2.t1+time_offset_ns;
     AddRawhit(&(h2.rhit[0]));
     AddRawhit(&(h2.rhit[1]));	
     Add2Dhit(&h2);

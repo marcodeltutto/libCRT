@@ -30,7 +30,7 @@ public:
 
   Int_t ConvertDavidFlashTree(const char * fn1, const char *fno);
   Int_t ConvertChrisFlashTree(const char * fn1, const char *fno);
-  Int_t MatchFlashestoCRT(const char * fncrt, const char *fntpc, const char *fno, Double_t dtns=100.0);
+  Int_t MatchFlashestoCRT(const char * fncrt, const char *fntpc, const char *fno, Double_t dtns=100.0, Double_t offsetns=0.0);
 
   void Print(Int_t Verbosity=4);
   void Clear();

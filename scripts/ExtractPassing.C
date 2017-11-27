@@ -18,7 +18,7 @@ void ExtractPassing(const char *fname1="",const char *ofname="")
 
   run=new CRTRun();
   run->CreateNewDataRun(ofname);
-  run->ExtractPassingTracks(run1,100);
+  run->ExtractPassingTracks(run1,100,40000);
  // run->BuildIndex("h2d.s","int(h2d.t0)");
   run->PrintSummary();
 

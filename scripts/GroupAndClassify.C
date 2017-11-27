@@ -18,7 +18,7 @@ void GroupAndClassify(const char *fname1="",const char *ofname="")
 
   run=new CRTRun();
   run->CreateNewDataRun(ofname);
-  run->GroupAndClassify(run1,100);
+  run->GroupAndClassify(run1,100,40000);
   run->BuildIndex("h2d[0].s","int(h2d[0].t0)");
   run->PrintSummary();
 

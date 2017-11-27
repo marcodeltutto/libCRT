@@ -57,8 +57,8 @@ Long64_t * index; //! transient Tree index array, where entries are sorted by ti
 void CreateNewDataRun(const char *fname); 
 Int_t MergeSortedByTime( CRTRun * run1, CRTRun * run2);
 Int_t AppendSortedByTime( CRTRun * run1);
-Int_t ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns=100.); //input file - run with CRT2D hits, fills CRTTracks
-Int_t GroupAndClassify( CRTRun * run1, Double_t time_window_ns=100.); //input file - run with CRT2D hits, fills CRT2D, CRTRawhits, CRTTracks
+Int_t ExtractPassingTracks( CRTRun * run1, Double_t time_window_ns=100.,Double_t time_offset_ns=0); //input file - run with CRT2D hits, fills CRTTracks
+Int_t GroupAndClassify( CRTRun * run1, Double_t time_window_ns=100.,Double_t time_offset_ns=0); //input file - run with CRT2D hits, fills CRT2D, CRTRawhits, CRTTracks
  
 Int_t OpenExistingDataRun(const char *fname, const char *Option="READ");
 Bool_t IsWritable(); 
