@@ -195,7 +195,7 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
   tpmt->SetBranchAddress("tr",&(ev.tr));
   tpmt->SetBranchAddress("fl",&(ev.flar));
   tpmt->SetBranchAddress("event",&(ev.event));
-  tpmt->SetBranchAddress("BNB",&(ev.IsBNB));
+  tpmt->SetBranchAddress("IsBNB",&(ev.IsBNB));
   tpmt->SetBranchAddress("trig_t0",&(ev.trig_t0));
   tpmt->SetBranchAddress("trig_s",&(ev.s));
   tpmt->SetBranchAddress("Nflashes",&(ev.Nflashes));
@@ -252,7 +252,7 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
          {
 	 printf("Match: TPC event %d: s=%d ns=%lf CRT entry %d!\n", ev.event, ev.s, flash_t1, ren);
 	// printf("NTracks=%d N2Dhits=%d \n\n", orun->NTracks,orun->N2Dhits);
-         fl->IsBNB=ev.IsBNB;
+        // fl->IsBNB=ev.IsBNB;
          fl->event=ev.event;
          orun->AddFlash(fl);
          cev.s=ev.s;
