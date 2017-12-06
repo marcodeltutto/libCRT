@@ -16,9 +16,13 @@ void  Append(const char *fname1="",const char *ofname="")
   if(strlen(ofname)==0) {printf("No output file name is given.\n");return;};
   if(run1->OpenExistingDataRun(fname1)==0){printf("run1: Extracting CRTRun object is failed.\n");return;};
 
-  if(run->OpenExistingDataRun(ofname, "UPDATE")==0) {printf("Output run does not exist. Creating new one.\n"); run->CreateNewDataRun(ofname);}
+  if(run->OpenExistingDataRun(ofname, "UPDATE")==0) {printf("Output run does not exist. Creating new one.\n"); 
+      run->CreateNewDataRun(ofname);
+      run->SetCalibs(run1->rheader->cal);
+      }
   else {printf("Opened run for update: \n"); run->PrintSummary();}
   run->AppendSortedByTime(run1);
+  if(run->rheader->cal==0) run->SetCalibs(run1->rheader->cal);
   run->BuildIndex("h2d.s","int(h2d.t0)");
   run->PrintSummary();
 

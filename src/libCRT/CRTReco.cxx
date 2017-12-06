@@ -37,7 +37,7 @@ Int_t CRTReco::ConvertDavidFlashTree(const char * fn1, const char *fno)
   ttpc->Branch("tr",&(ev.tr));
   ttpc->Branch("fl",&(ev.flar));
   ttpc->Branch("event",&(ev.event),"event/I");
-  ttpc->Branch("BNB",&(ev.IsBNB),"IsBNB/I");
+  ttpc->Branch("IsBNB",&(ev.IsBNB),"IsBNB/I");
   ttpc->Branch("trig_t0",&(ev.trig_t0),"trig_t0/I");
   ttpc->Branch("trig_s",&(ev.s),"s/I");
   ttpc->Branch("Nflashes",&(ev.Nflashes),"Nflashes/I");
@@ -66,14 +66,17 @@ Int_t CRTReco::ConvertDavidFlashTree(const char * fn1, const char *fno)
   for(int i=0;i<N;i++)
    {
      t1->GetEntry(ind[i]);
+   //  printf("Index %d Tree Entry %lld beam=%d t1=%lf\n",i,ind[i],beam,fl.t1);
      if(prevev==-1) {ev.event=event; prevev=event;} //init at first entry
      if(event!=prevev) { if(ev.s>0) ttpc->Fill(); ev.Clear(); ev.event=event; prevev=event;} //event changed, perform fill
-     if(beam==0) ev.IsBNB=1; else  ev.IsBNB=0; //inverted logic in David's file
+ //    if(beam==0) ev.IsBNB=1; else  ev.IsBNB=0; //inverted logic in David's file
      ev.s=s;
      ev.trig_t0=trig_t0; 
      fl.t1=fl.t1*1000.; //convert us to ns 
      fl.s=s;
      fl.event=event;
+     ev.IsBNB=1-beam;
+     fl.IsBNB=1-beam;
      if(s>0) ev.AddFlash(&fl);
    }
    ttpc->Fill(); //fill last event
@@ -162,6 +165,7 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
   PMTFlash *fl;
   Int_t matched=0;
   TPCEvent ev;
+  CRTEvent cev;
  // CRTTrack tr;
   TTreeIndex *tind;
   Int_t retval=0;
@@ -251,6 +255,10 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
          fl->IsBNB=ev.IsBNB;
          fl->event=ev.event;
          orun->AddFlash(fl);
+         cev.s=ev.s;
+         cev.mean_t0=ev.trig_t0;
+         cev.mean_t1=fl->t1;
+         orun->AddEvent(&cev);
 	 matched=0;
          }	 
        }
