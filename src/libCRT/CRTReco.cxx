@@ -179,7 +179,7 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
 
   CRTRun *orun=new CRTRun();
   orun->CreateNewDataRun(fno);
-  orun->t->SetAlias("matched","abs(1.*fl[].t1-h2d[].t1-535)<55&&fl[].s-h2d[].s>=-1&&fl[].s-h2d[].s<=0");
+ // orun->t->SetAlias("matched","abs(1.*fl[].t1-h2d[].t1-535)<55&&fl[].s-h2d[].s>=-1&&fl[].s-h2d[].s<=0");
   Long64_t * ind=0;
   Int_t sec;
   Double_t flash_t1=0;
