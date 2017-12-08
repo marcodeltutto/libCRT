@@ -34,7 +34,7 @@ Int_t CRTReco::ConvertDavidFlashTree(const char * fn1, const char *fno)
   //Double_t t1;
   ftpc=new TFile(fno,"RECREATE");
   ttpc=new TTree();
-  ttpc->Branch("tr",&(ev.tr));
+//  ttpc->Branch("tr",&(ev.tr));
   ttpc->Branch("fl",&(ev.flar));
   ttpc->Branch("event",&(ev.event),"event/I");
   ttpc->Branch("IsBNB",&(ev.IsBNB),"IsBNB/I");
@@ -99,14 +99,21 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
   Int_t evnum;
   ftpc=new TFile(fno,"RECREATE");
   ttpc=new TTree();
-  ttpc->Branch("tr",&(ev.tr));
+//  ttpc->Branch("tr",&(ev.tr));
+  
+  ttpc->Branch("tsx",&(ev.tsx));
+  ttpc->Branch("tsy",&(ev.tsy));
+  ttpc->Branch("tsz",&(ev.tsz));
+  ttpc->Branch("tex",&(ev.tex));
+  ttpc->Branch("tey",&(ev.tey));
+  ttpc->Branch("tez",&(ev.tez));
+  ttpc->Branch("tL",&(ev.tL));
   ttpc->Branch("fl",&(ev.flar));
   ttpc->Branch("event",&(ev.event),"event/I");
-  ttpc->Branch("BNB",&(ev.IsBNB),"IsBNB/I");
+  ttpc->Branch("IsBNB",&(ev.IsBNB),"IsBNB/I");
   ttpc->Branch("trig_t0",&(ev.trig_t0),"trig_t0/I");
   ttpc->Branch("trig_s",&(ev.s),"s/I");
   ttpc->Branch("Nflashes",&(ev.Nflashes),"Nflashes/I");
-
 
 
   TFile * f1=new TFile(fn1);
@@ -117,6 +124,15 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
   t1->SetBranchAddress("event_eventNum",&evnum);
   t1->SetBranchAddress("ts_seconds",&tssec);
   t1->SetBranchAddress("ts_nanoseconds",&tsnsec);
+  //Version 2 of TPCEvent
+  t1->SetBranchAddress("track_startX",&(ev.tsx));
+  t1->SetBranchAddress("track_startY",&(ev.tsy));
+  t1->SetBranchAddress("track_startZ",&(ev.tsz));
+  t1->SetBranchAddress("track_endX",&(ev.tex));
+  t1->SetBranchAddress("track_endY",&(ev.tey));
+  t1->SetBranchAddress("track_endZ",&(ev.tez));
+  t1->SetBranchAddress("track_length",&(ev.tL));
+/* //Version 1 of TPCEvent
   t1->SetBranchAddress("track_startX",&(tr.hit2d[0].x));
   t1->SetBranchAddress("track_startY",&(tr.hit2d[0].y));
   t1->SetBranchAddress("track_startZ",&(tr.hit2d[0].z));
@@ -124,7 +140,7 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
   t1->SetBranchAddress("track_endY",&(tr.hit2d[1].y));
   t1->SetBranchAddress("track_endZ",&(tr.hit2d[1].z));
   t1->SetBranchAddress("track_length",&(tr.L));
-   
+*/ 
   t1->SetBranchAddress("pe_flash",&(fl.npe));
   t1->SetBranchAddress("time_flash",&(fl.t1));
   t1->SetBranchAddress("t0",&(fl.t0));
@@ -142,12 +158,14 @@ Int_t CRTReco::ConvertChrisFlashTree(const char * fn1, const char *fno)
      ev.trig_t0=tsnsec;
      fl.t1=fl.t1*1000.; //convert us to ns 
      fl.t0=fl.t0*1000.; //convert us to ns 
-     tr.L=tr.L/100.; //convert cm to meters
+ //    tr.L=tr.L/100.; //convert cm to meters
+     ev.tL=ev.tL/100.; //convert cm to meters
      fl.s=ev.s;
      ev.AddFlash(&fl);
-     ev.tr->Copy(&tr); 
-  //   if(beam==0) ev.IsBNB=1; else  ev.IsBNB=0; //inverted logic in David's file
-     ev.IsBNB=0; 
+    // ev.tr->Copy(&tr); 
+   //  ev.IsBNB=1-beam;
+  //   fl.IsBNB=1-beam;
+     ev.IsBNB=1; 
      if(ev.s>0) ttpc->Fill(); 
      ev.Clear(); 
    }
@@ -179,6 +197,13 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
 
   CRTRun *orun=new CRTRun();
   orun->CreateNewDataRun(fno);
+    orun->t->Branch("tsx",&(ev.tsx),"tsx/D"); 
+    orun->t->Branch("tsy",&(ev.tsy),"tsy/D"); 
+    orun->t->Branch("tsz",&(ev.tsz),"tsz/D"); 
+    orun->t->Branch("tex",&(ev.tex),"tex/D"); 
+    orun->t->Branch("tey",&(ev.tey),"tey/D"); 
+    orun->t->Branch("tez",&(ev.tez),"tez/D"); 
+    orun->t->Branch("tL",&(ev.tL),"tL/D"); 
  // orun->t->SetAlias("matched","abs(1.*fl[].t1-h2d[].t1-535)<55&&fl[].s-h2d[].s>=-1&&fl[].s-h2d[].s<=0");
   Long64_t * ind=0;
   Int_t sec;
@@ -191,8 +216,22 @@ Int_t CRTReco::MatchFlashestoCRT(const char * fncrt, const char *fntpc, const ch
    if(tind<=0) { printf("Input CRT run has no index! Exiting.\n"); return 0; }
 
   Int_t N=tpmt->GetEntries();
-
+/*
   tpmt->SetBranchAddress("tr",&(ev.tr));
+  tpmt->SetBranchAddress("fl",&(ev.flar));
+  tpmt->SetBranchAddress("event",&(ev.event));
+  tpmt->SetBranchAddress("IsBNB",&(ev.IsBNB));
+  tpmt->SetBranchAddress("trig_t0",&(ev.trig_t0));
+  tpmt->SetBranchAddress("trig_s",&(ev.s));
+  tpmt->SetBranchAddress("Nflashes",&(ev.Nflashes));
+*/
+  tpmt->SetBranchAddress("tsx",&(ev.tsx));
+  tpmt->SetBranchAddress("tsy",&(ev.tsy));
+  tpmt->SetBranchAddress("tsz",&(ev.tsz));
+  tpmt->SetBranchAddress("tex",&(ev.tex));
+  tpmt->SetBranchAddress("tey",&(ev.tey));
+  tpmt->SetBranchAddress("tez",&(ev.tez));
+  tpmt->SetBranchAddress("tL",&(ev.tL));
   tpmt->SetBranchAddress("fl",&(ev.flar));
   tpmt->SetBranchAddress("event",&(ev.event));
   tpmt->SetBranchAddress("IsBNB",&(ev.IsBNB));

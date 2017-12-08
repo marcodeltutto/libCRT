@@ -54,7 +54,9 @@ public:
 Int_t event; //TPC event number
 Int_t IsBNB; // flag, marking event, triggered by BNB BES
 TClonesArray * flar; // Array of PMTFlashes
-CRTTrack * tr; // reconstructed TPC track (muon)
+//CRTTrack * tr; // reconstructed TPC track (muon)
+
+Double_t tsx, tex, tsy, tey, tsz, tez, tL; //reconstructed TPC track (muon)
 Int_t trig_t0; // Trigger UTC nanoseconds (supposed to be GPS time, but not clear!)
 Int_t    s; //Trigger Timestamp: Second (linux seconds)
 Int_t Nflashes;
@@ -65,7 +67,8 @@ Int_t Nflashes;
   void AddFlash(PMTFlash * fl);
   void Clear();
   void Dump(){Print(4);}
-  ClassDef(TPCEvent,1)  // TPC combined event: flashes and reconstructed track (optional)
+//  ClassDef(TPCEvent,1)  // TPC combined event: flashes and reconstructed track (optional)
+  ClassDef(TPCEvent,2)  // TPC combined event: flashes and reconstructed track (optional)
 };
 
 

@@ -20,7 +20,7 @@ ClassImp(TPCEvent)
 TPCEvent::TPCEvent()
 {
   flar=new TClonesArray("PMTFlash",10);
-  tr=new CRTTrack();
+ // tr=new CRTTrack();
   event=0;
   IsBNB=kFALSE;
   trig_t0=0;
