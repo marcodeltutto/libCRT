@@ -56,6 +56,7 @@ void ConvertTrigsToRun(char *fname="")
       if(hitsinev%10000==0) printf("%d events processed..\n",evsread);
       
      }
+  run->BuildIndex("h.s","int(h.ts0)");
  run->PrintSummary();
  run->Close();
 }
