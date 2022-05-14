@@ -36,6 +36,7 @@ private:
 public:
 TFile *f;
 TTree *t;
+TTree *aux;
 // CRT section
 TClonesArray * hits; // Array of CRTRawhits
 TClonesArray * h2d; //Array of CRT2Dhits 
@@ -46,6 +47,8 @@ Int_t NRawhits; //! transient: Number of raw hits in current entry
 Int_t N2Dhits;  //! transient: Number of 2D hits in current entry
 Int_t NEvents;  //! transient: Number of Events in current entry
 Int_t NTracks;  //! transient: Number of passing through trcaks in current entry
+Double_t POT; //Total POT for this run
+Double_t NSpills; //Number of spills for this run
 //TPC section
 //TPCEvent * tpc_ev; //pointer to TPC event container
 Int_t NFlashes;  //! transient: Number of TPC PMT Flashes in current entry
@@ -78,6 +81,7 @@ void Fill();
 void BuildIndex(const char *major,const char *minor); 
 Int_t GetEntry(Int_t en){return t->GetEntry(en);};
 Int_t GetEntrySortedByTime(Int_t en);
+void AddPOTAndNSpills(double, double);
   ClassDef(CRTRun,1)  // CRT run
 };
 
@@ -95,6 +99,8 @@ Int_t NTracks; //Number of passing through tracks run
 Int_t NFlashes; //Number of TPC PMT flashes in the run
 Int_t Nt0refs[NFEBS]; //Number of T0REF events per FEB
 Int_t Nt1refs[NFEBS]; //Number of T1REF events per FEB
+Double_t POT; //Total POT for this run
+Double_t NSpills; //Number of spills for this run
 
 Int_t startSecondsUTC;
 Int_t endSecondsUTC;

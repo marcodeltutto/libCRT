@@ -40,6 +40,9 @@ NTracks=0; //Number of Tracks in the run
 NFlashes=0; //Number of TPC PMT flashes in the run
 startSecondsUTC=0;
 endSecondsUTC=0;
+POT=0; //Total POT for this run
+NSpills=0; //Number of spills for this run
+
 for(int i=0;i<NFEBS; i++) {Nt0refs[i]=0;Nt1refs[i]=0;}
 }
 
@@ -162,6 +165,9 @@ void CRTRun::CreateNewDataRun(const char *fname)
           t->Branch("NEvents",&NEvents,"NEvents/I"); 
           t->Branch("NTracks",&NTracks,"NTracks/I"); 
           t->Branch("NFlashes",&NFlashes,"NFlashes/I"); 
+  aux=new TTree("aux","CRT aux tree");
+  aux->Branch("POT",&POT,"POT/D"); 
+  aux->Branch("NSpills",&NSpills,"NSpills/D"); 
 rheader->N=0;
 rheader->NRawhits=0; //Number of raw hits in current entry
 rheader->N2Dhits=0; //Number of 2D hits in current entry
@@ -575,6 +581,13 @@ Int_t CRTRun::MergeSortedByTime( CRTRun * run1, CRTRun * run2)
     rheader->Nt1refs[i]=run1->rheader->Nt1refs[i]+run2->rheader->Nt1refs[i];
     }
 
+  if (run1->rheader->POT != run2->rheader->POT) {
+    printf("WARNING! The two runs have different POT exposure!");
+  }
+  rheader->POT = run1->rheader->POT;
+  rheader->NSpills = run1->rheader->NSpills;
+
+
   return rheader->N;
 } 
 
@@ -586,6 +599,7 @@ void CRTRun::Close()
   f->cd();
  	  if( strcmp(status,"READ") ) {             // file is in "write" mode
  	    if(t)          t->Write("t",TObject::kOverwrite);
+      if(aux)        aux->Write("aux",TObject::kOverwrite);
  	    if(rheader)        rheader->Write("Header",TObject::kOverwrite);
  	  }
  	  f->Purge();
@@ -639,6 +653,7 @@ void CRTRun::AddRawhitBuffer(CRTRawhitBuffer *b)
 void CRTRun::Add2Dhit(CRT2Dhit * h)
 {
   if(!h2d) return;
+  // std::cout << "Add2Dhit, last hit index is " << h2d->GetLast() << std::endl;
   CRT2Dhit * ht;
   ht=(CRT2Dhit*)(new((*h2d)[h2d->GetLast()+1])  CRT2Dhit());
   ht->Copy(h);
@@ -689,6 +704,16 @@ void CRTRun::AddFlash(PMTFlash * e)
   rheader->NFlashes++;
   NFlashes++;
 }
+
+
+//______________________________________________________________________________
+void CRTRun::AddPOTAndNSpills(double pot, double spills)
+{
+  POT = pot;
+  NSpills = spills;
+  aux->Fill();
+}
+
 
 
 //______________________________________________________________________________
