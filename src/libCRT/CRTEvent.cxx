@@ -333,6 +333,8 @@ CRT2Dhit::CRT2Dhit(CRTRawhit *h1, CRTRawhit *h2, CRTCalibs *cal)
    x=cal->getHitX(rhit[0].mac5, max1_nch,rhit[1].mac5, max2_nch);
    y=cal->getHitY(rhit[0].mac5, max1_nch,rhit[1].mac5, max2_nch);
    z=cal->getHitZ(rhit[0].mac5, max1_nch,rhit[1].mac5, max2_nch);
+   // std::cout << "CRT2Dhit, from " << rhit[0].mac5 << " " << max1_nch << " " << rhit[1].mac5 << " " << max2_nch << std::endl;
+   // std::cout << "CRT2Dhit, x " << x << "  y " << y << "  z " << z << std::endl;
    plane1=cal->getHitPlane(rhit[0].mac5);
    plane2=cal->getHitPlane(rhit[1].mac5);
      
@@ -488,14 +490,18 @@ CRTCalibs::CRTCalibs(const char *f_cable_delays, const char *f_positions, const 
   std::ifstream in;
   in.open(f_positions);
   while (!in.eof()) {
+    // std::cout << "" << std::endl;
     in>>id>>x>>y>>z>>p>>b>>c;
     pl=id/100; ch=(id-100*int(pl));
+    // std::cout << "Emplacing " << x << " "<< y << " "<< z << " for pl " << pl << " and ch " << ch << ", given id " << id << std::endl;
     Xs[pl][ch]=x;
     Ys[pl][ch]=y;
     Zs[pl][ch]=z;
     Plane[pl][ch]=p;
     PositionExists[pl][ch]=1;
     ModuleExists[pl]=1;
+    // std::cout << "done id " << id << std::endl;
+
   }      
   in.close();
   }
@@ -527,13 +533,37 @@ CRTCalibs::CRTCalibs(const char *f_cable_delays, const char *f_positions, const 
   }
 }
 
+//_______________________________________________________________________
+Double_t CRTCalibs::getDistanceToSIPM1(int mac1, int strip1, int mac2, int strip2)
+{
+  Double_t L=0;
+  if(Xs[mac2][0]!=Xs[mac2][2]) L=Xs[mac2][strip2*2]-Xs[mac1][0]; //coord along the strip minus SiPM position
+  if(Ys[mac2][0]!=Ys[mac2][2]) L=Ys[mac2][strip2*2]-Ys[mac1][0]; //coord along the strip minus SiPM position
+  if(Zs[mac2][0]!=Zs[mac2][2]) L=Zs[mac2][strip2*2]-Zs[mac1][0]; //coord along the strip minus SiPM position
+  if(L<0) L=-L;
+  return L;
+}
+
+//_______________________________________________________________________
+Double_t CRTCalibs::getDistanceToSIPM2(int mac1, int strip1, int mac2, int strip2)
+{
+  Double_t L=0;
+  if(Xs[mac1][0]!=Xs[mac1][2]) L=Xs[mac1][strip1*2]-Xs[mac2][0]; //coord along the strip minus SiPM position
+  if(Ys[mac1][0]!=Ys[mac1][2]) L=Ys[mac1][strip1*2]-Ys[mac2][0]; //coord along the strip minus SiPM position
+  if(Zs[mac1][0]!=Zs[mac1][2]) L=Zs[mac1][strip1*2]-Zs[mac2][0]; //coord along the strip minus SiPM position
+  if(L<0) L=-L;
+  return L;
+}
+
 
 //_______________________________________________________________________
 Double_t CRTCalibs::getHitT1(int mac1, int strip1,  int t1, int mac2, int strip2, int t2)
 { 
   Double_t ret=0;
   Double_t L=0;
+  // std::cout << " getHitT1 mac2 " << mac2 << std::endl;
   if(Xs[mac2][0]!=Xs[mac2][2]) L=Xs[mac2][strip2*2]-Xs[mac1][0]; //coord along the strip minus SiPM position
+  // std::cout << " done! " << std::endl;
   if(Ys[mac2][0]!=Ys[mac2][2]) L=Ys[mac2][strip2*2]-Ys[mac1][0]; //coord along the strip minus SiPM position
   if(Zs[mac2][0]!=Zs[mac2][2]) L=Zs[mac2][strip2*2]-Zs[mac1][0]; //coord along the strip minus SiPM position
   if(L<0) L=-L;
@@ -572,10 +602,12 @@ Double_t CRTCalibs::getHitT(int mac1, int strip1,  int t1, int mac2, int strip2,
 //_______________________________________________________________________
 Double_t CRTCalibs::getHitX(int mac1, int strip1, int mac2, int strip2)
 { 
+  // std::cout << "getHitX, mac1 " << mac1 << ", strip1 " << strip1 << ", mac2 " << mac2 << ", strip2 " << strip2 << std::endl;
   Double_t ret=0; 
   if(Xs[mac1][0]!=Xs[mac1][2]) ret=(Xs[mac1][strip1*2]+Xs[mac1][strip1*2+1])/2.;
   else if(Xs[mac2][0]!=Xs[mac2][2]) ret=(Xs[mac2][strip2*2]+Xs[mac2][strip2*2+1])/2.;
   else ret=(Xs[mac2][strip2*2]+Xs[mac1][strip1*2])/2;
+  // std::cout << "ret: " << ret << std::endl;
   return ret;
 }
 

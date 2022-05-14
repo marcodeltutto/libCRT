@@ -168,6 +168,8 @@ Int_t ADCGain[NFEBS][32];
   Int_t GetVersion() {return Version;}
   void SetStripWidth(Double_t StripWidth) {StripW=StripWidth;}
 
+Double_t getDistanceToSIPM1(int mac1, int strip1, int mac2, int strip2);
+Double_t getDistanceToSIPM2(int mac1, int strip1, int mac2, int strip2);
 Double_t getHitT1(int mac1, int strip1,  int t1, int mac2, int strip2, int t2);
 Double_t getHitT2(int mac1, int strip1,  int t1, int mac2, int strip2, int t2);
 Double_t getHitDT(int mac1, int strip1,  int t1, int mac2, int strip2,int t2);
